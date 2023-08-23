@@ -39,7 +39,7 @@ export default function SignUpPage() {
             await axios.post(BASE_URL + "/users/signup", body)
                 .then((res) => {
                     localStorage.setItem("token", res.data.token)
-                    console.log(res)
+                    
                 })
             setIsLoggedIn(true)
             setIsLoading(false)
