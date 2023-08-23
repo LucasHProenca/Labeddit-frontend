@@ -1,13 +1,38 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../constants/constants";
 import { globalContext } from "./GlobalStateContext";
 
 export const GlobalState = ({children}) => {
     
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    const [posts, setPosts] = useState([])
+
+    const getPosts = async () => {
+        try {
+            const token = window.localStorage.getItem("token")
+
+            const config = {
+                headers: {
+                    Authorization: token
+                }
+            }
+
+            const response = await axios.get(BASE_URL + "/posts", config)
+            setPosts(response.data)
+
+        } catch (error) {
+            console.error(error.response)
+            window.alert(error.response.data)
+        }
+    }
+
     const context = {
         isLoggedIn,
-        setIsLoggedIn
+        setIsLoggedIn,
+        posts,
+        getPosts
     }
 
     return (

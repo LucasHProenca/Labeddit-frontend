@@ -40,7 +40,7 @@ export default function Header() {
                     {buttonText}
                 </ButtonHeader>
             </HeaderContainer>
-        } else if (params.pathname === "/posts/:id/comments") {
+        } else if (params.pathname.includes("/post-comments/")) {
             return <HeaderContainer>
                 <ButtonHeader onClick={() => goToHomePage(navigate)}>
                     ❌

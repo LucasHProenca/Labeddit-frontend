@@ -13,7 +13,7 @@ export default function Router() {
             <Route path="/posts" element={<HomePage/>}/>
             <Route path="/signup" element={<SignUpPage/>}/>
             <Route path="/" element={<LoginPage/>}/>
-            <Route path="/post/:id/comments" element={<CommentsPage/>}/>
+            <Route path="/post-comments/:id" element={<CommentsPage/>}/>
         </Routes>
         </BrowserRouter>
     )
