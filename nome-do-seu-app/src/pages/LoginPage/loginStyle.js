@@ -59,6 +59,13 @@ gap: 1rem;
 border-radius: 2.7rem;
 background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
 margin-bottom: 1rem;
+color: #FFF;
+text-align: center;
+font-family: Noto Sans;
+font-size: 1.4rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
 `
 
 export const BotaoCriarConta = styled.button`
@@ -71,6 +78,14 @@ gap: 1rem;
 border-radius: 2.7rem;
 border: 1px solid #FE7E02;
 margin-top: 1rem;
+background: white;
+color: #FE7E02;
+text-align: center;
+font-family: Noto Sans;
+font-size: 1.4rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
 `
 
 export const LinhaEntreBotoes = styled.hr`

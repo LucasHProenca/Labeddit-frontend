@@ -6,12 +6,14 @@ import PostCard from "../../Components/PostCard/PostCard"
 import { BASE_URL } from "../../constants/constants"
 import { globalContext } from "../../GlobalState/GlobalStateContext"
 import { useProtectedPage } from "../../hooks/use-protected-page"
+import { CreateCommentContainer, CommentCreation, CommentBtn, CommentLine, CardsPosition } from "./commentsStyle"
 
 export default function CommentsPage () {
     const context = useContext(globalContext)
     const { posts, getPosts } = context
     const [isLoading, setIsLoading] = useState(false)
     const [comments, setComments] = useState([])
+    const [commentContent, setCommentContent] = useState("")
     let pathParams = useParams()
     let params = useLocation()
     // console.log(pathParams)
@@ -30,6 +32,7 @@ export default function CommentsPage () {
     
 
     const getComments = async () => {
+        setIsLoading(true)
         try {
             const token = window.localStorage.getItem("token")
 
@@ -40,8 +43,37 @@ export default function CommentsPage () {
             }
 
             const response = await axios.get(BASE_URL + `/comments/${pathParams.id}`, config)
+            setIsLoading(false)
             setComments(response.data)
 
+        } catch (error) {
+            console.error(error.response)
+            window.alert(error.response.data)
+        }
+    }
+
+    const createComment = async (e) => {
+        e.preventDefault()
+
+        setIsLoading(true)
+        try {
+            const token = window.localStorage.getItem("token")
+
+            const config = {
+                headers: {
+                    Authorization: token
+                }
+            }
+
+            const body = {
+                content: commentContent
+            }
+
+            const response = await axios.post(BASE_URL + `/comments/${pathParams.id}`, body, config)
+            setCommentContent("")
+            setIsLoading(false)
+            getComments()
+            getPosts()
         } catch (error) {
             console.error(error.response)
             window.alert(error.response.data)
@@ -54,8 +86,6 @@ export default function CommentsPage () {
         post.id === id
     )
 
-    
-    
     const result = () => {
         if(findPost) {
             return <div>
@@ -69,12 +99,22 @@ export default function CommentsPage () {
     }
     return (
         <div>
+            <CardsPosition>
             {result()}
-            <div>
+            </CardsPosition>
+            <CreateCommentContainer onSubmit={createComment}>
+            <CommentCreation name="areaDeTexto" id="areaDeTexto" cols="30" rows="10" required 
+            value={commentContent} 
+            onChange = {(e) => setCommentContent(e.target.value)}
+                placeholder="Adicionar comentário"></CommentCreation>
+            <CommentBtn disabled = {isLoading}>Responder</CommentBtn>
+            </CreateCommentContainer>
+            <CommentLine/>
+            <CardsPosition>
                 {comments.map((comment) => {
                     return <CommentCard key = {comment.id} comment = {comment} getComments = {getComments}/>
                 })}
-            </div>
+            </CardsPosition>
         </div>
     )
 }
