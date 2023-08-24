@@ -1,8 +1,8 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import { globalContext } from "../../GlobalState/GlobalStateContext"
 import { goToHomePage, goToLoginPage } from "../../Router/coordinator"
-import { HeaderContainer, ImgHeader, ButtonHeader } from "./headerStyle"
+import { HeaderContainer, ImgHeader, ButtonHeader, BtnBackPage } from "./headerStyle"
 import Logo from "../../assets/midia/LogoHeader.png"
 export default function Header() {
 
@@ -20,7 +20,7 @@ export default function Header() {
 
     }
 
-    const buttonText = isLoggedIn ? "Logout" : "Login"
+  let buttonText = isLoggedIn ? "Logout" : "Login"
 
     const screenRender = () => {
         if (params.pathname === "/") {
@@ -42,9 +42,9 @@ export default function Header() {
             </HeaderContainer>
         } else if (params.pathname.includes("/post-comments/")) {
             return <HeaderContainer>
-                <ButtonHeader onClick={() => goToHomePage(navigate)}>
+                <BtnBackPage onClick={() => goToHomePage(navigate)}>
                     ❌
-                </ButtonHeader>
+                </BtnBackPage>
                 <ImgHeader src={Logo} alt = "logo"  />
                 <ButtonHeader onClick={() => buttonAction()}>
                     {buttonText}

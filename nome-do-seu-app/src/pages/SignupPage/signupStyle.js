@@ -25,6 +25,13 @@ gap: 1rem;
 border-radius: 2.7rem;
 background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
 margin-bottom: 1rem;
+color: #FFF;
+text-align: center;
+font-family: Noto Sans;
+font-size: 1.4rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
 `
 
 export const TermosContrato = styled.p`

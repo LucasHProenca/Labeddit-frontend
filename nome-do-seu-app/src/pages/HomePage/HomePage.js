@@ -6,6 +6,7 @@ import { BASE_URL } from "../../constants/constants"
 import { globalContext } from "../../GlobalState/GlobalStateContext"
 import { useProtectedPage } from "../../hooks/use-protected-page"
 import { goToLoginPage } from "../../Router/coordinator"
+import { CreatePostContainer, PostCreation, PostBtn, FormLine, CardsPosition } from "./homestyle"
 
 export default function HomePage() {
     const navigate = useNavigate()
@@ -54,20 +55,19 @@ export default function HomePage() {
 
     return (
         <div>
-            <form onSubmit={createPost}>
-            <textarea name="areaDeTexto" id="areaDeTexto" cols="30" rows="10" required 
+            <CreatePostContainer onSubmit={createPost}>
+            <PostCreation name="areaDeTexto" id="areaDeTexto" cols="30" rows="10" required 
             value={postContent} 
             onChange = {(e) => setPostContent(e.target.value)}
-                placeholder="Escreva seu post..."></textarea>
-            <button disabled = {isLoading}>Postar</button>
-            </form>
-            <hr/>
-
-            <div>
+                placeholder="Escreva seu post..."></PostCreation>
+            <PostBtn disabled = {isLoading}>Postar</PostBtn>
+            </CreatePostContainer>
+            <FormLine/>
+            <CardsPosition>
                 {posts.map((post) => {
                     return <PostCard key={post.id} post = {post} id = {post.id} />
                 })}
-            </div>
+            </CardsPosition>
         </div>
     )
 }

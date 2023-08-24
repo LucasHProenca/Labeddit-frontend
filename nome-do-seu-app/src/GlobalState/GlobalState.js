@@ -7,6 +7,14 @@ export const GlobalState = ({children}) => {
     
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
+    useEffect(() => {
+        if(window.localStorage.getItem("token")){
+            setIsLoggedIn(true)
+        } else {
+            setIsLoggedIn(false)
+        }
+    }, [])
+
     const [posts, setPosts] = useState([])
 
     const getPosts = async () => {
