@@ -1,17 +1,19 @@
 import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import {BASE_URL} from "../../constants/constants"
+import { BASE_URL } from "../../constants/constants"
 import axios from "axios";
 import { goToHomePage, goToSignupPage } from "../../Router/coordinator";
 import Logo from "../../assets/midia/Logo.png";
-import {FormLogin, LinhaEntreBotoes, SeparacaoBotoes, LogoContainer, ImgLogo, CabecalhoLogin, SloganLogin, InputLogin, BotaoContinuar, BotaoCriarConta} from "./loginStyle"
+import { FormLogin, LinhaEntreBotoes, SeparacaoBotoes, LogoContainer, ImgLogo, CabecalhoLogin, SloganLogin, InputLogin, BotaoContinuar, BotaoCriarConta, PasswordView } from "./loginStyle"
 import { globalContext } from "../../GlobalState/GlobalStateContext";
+import { AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
 
-export default function LoginPage () {
+export default function LoginPage() {
 
     const navigate = useNavigate()
     const context = useContext(globalContext)
-    const {isLoggedIn, setIsLoggedIn} = context
+    const { isLoggedIn, setIsLoggedIn } = context
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -21,12 +23,16 @@ export default function LoginPage () {
     });
 
     const onChangeForm = (e) => {
-        setForm({...form, [e.target.name]: e.target.value})
+        setForm({ ...form, [e.target.name]: e.target.value })
     }
 
     const [showPassword, setShowPassword] = useState(false)
 
-    const login = async(e) => {
+    const handleShowPassword = (type) => {
+        setShowPassword(type);
+    };
+
+    const login = async (e) => {
         e.preventDefault()
 
         try {
@@ -37,10 +43,10 @@ export default function LoginPage () {
                 password: form.password
             }
             await axios.post(BASE_URL + "/users/login", body)
-            .then((res) => {
-                localStorage.setItem("token", res.data.token)
+                .then((res) => {
+                    localStorage.setItem("token", res.data.token)
 
-            })
+                })
 
             setIsLoading(false)
             goToHomePage(navigate)
@@ -54,36 +60,51 @@ export default function LoginPage () {
 
     return (
         <div>
-           <LogoContainer>
-            <ImgLogo src ={Logo} alt = "logo" />
-            <CabecalhoLogin>LabEddit</CabecalhoLogin>
-            <SloganLogin>O projeto de rede social da Labenu</SloganLogin>
-           </LogoContainer>
+            <LogoContainer>
+                <ImgLogo src={Logo} alt="logo" />
+                <CabecalhoLogin>LabEddit</CabecalhoLogin>
+                <SloganLogin>O projeto de rede social da Labenu</SloganLogin>
+            </LogoContainer>
             <FormLogin onSubmit={login} autoComplete="off">
-               
-                    <label></label>
-                    <InputLogin
-                    name = {"email"}
-                    value = {form.email}
-                    onChange = {onChangeForm}
+
+                <label></label>
+                <InputLogin
+                    name={"email"}
+                    value={form.email}
+                    onChange={onChangeForm}
                     placeholder="E-mail"
-                    />
-                
-                
-                    <label></label>
-                    <InputLogin
-                    name= {"password"}
+                    required
+                    autoComplete="email"
+                />
+
+                <PasswordView>
+                <label></label>
+                <InputLogin
+                    name={"password"}
                     value={form.password}
-                    onChange = {onChangeForm}
-                    type={showPassword? "text" : "password"}
+                    onChange={onChangeForm}
+                    type={showPassword ? "text" : "password"}
                     placeholder="Senha"
+                    required
+                    autoComplete="current-password"
+                />
+                {showPassword === false ? (
+                    <AiOutlineEye
+                        class = "eye"
+                        onClick={() => handleShowPassword(true)}
                     />
-                
-                <BotaoContinuar disabled = {isLoading}>Continuar</BotaoContinuar>
+                ) : (
+                    <AiOutlineEyeInvisible
+                        class = "eye"          
+                        onClick={() => handleShowPassword(false)}
+                    />
+                )}
+                </PasswordView>
+                <BotaoContinuar disabled={isLoading}>Continuar</BotaoContinuar>
             </FormLogin>
             <LinhaEntreBotoes></LinhaEntreBotoes>
             <SeparacaoBotoes>
-            <BotaoCriarConta disabled={isLoading} onClick = {() => goToSignupPage(navigate)}>Crie uma conta!</BotaoCriarConta>
+                <BotaoCriarConta disabled={isLoading} onClick={() => goToSignupPage(navigate)}>Crie uma conta!</BotaoCriarConta>
             </SeparacaoBotoes>
         </div>
     )

@@ -22,7 +22,7 @@ flex-shrink: 0;
 text-align: center;
 `
 
-export const CabecalhoLogin = styled.h1 `
+export const CabecalhoLogin = styled.h1`
 color: #373737;
 font-family: IBM Plex Sans;
 font-size: 3.6rem;
@@ -32,7 +32,7 @@ line-height: normal;
 text-align: center;
 `
 
-export const SloganLogin = styled.p `
+export const SloganLogin = styled.p`
 color: #000;
 text-align: center;
 font-family: IBM Plex Sans;
@@ -42,11 +42,12 @@ font-weight: 300;
 line-height: normal;
 `
 
-export const InputLogin = styled.input `
+export const InputLogin = styled.input`
 width: 36.3rem;
 height: 6rem;
 flex-shrink: 0;
-
+font-size: 1.4rem;
+padding: 0px 50px 0px 20px;
 `
 
 export const BotaoContinuar = styled.button`
@@ -99,3 +100,15 @@ display: flex;
 justify-content: center;
 align-items: center;
 `
+export const PasswordView = styled.div`
+position: relative;
+
+.eye {
+    cursor: pointer;
+    position: absolute;
+    right: 5%;
+    top: 40%;
+    font-size: 1.4rem;
+}
+`
+

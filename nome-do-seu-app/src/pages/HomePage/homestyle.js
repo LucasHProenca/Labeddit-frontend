@@ -14,6 +14,8 @@ height: 13.1rem;
 flex-shrink: 0;
 border-radius: 1.2rem;
 background: #EDEDED;
+font-size: 1.4rem;
+padding: 0px 50px 0px 20px;
 `
 
 export const PostBtn = styled.button `
@@ -33,7 +35,10 @@ line-height: normal;
 `
 
 export const FormLine = styled.hr `
+display: flex;
+justify-content: center;
 margin-top: 5vh;
+margin-bottom: 3vh;
 width: 36.3006rem;
 height: 0.05rem;
 background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%), #ACACAC;
@@ -46,4 +51,6 @@ flex-direction: column;
 align-items: center;
 gap: 1.5rem;
 `
+
+
 
