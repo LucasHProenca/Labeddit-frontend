@@ -48,14 +48,17 @@ export default function HomePage() {
             setPostContent("")
             setIsLoading(false)
             getPosts()
+            showToast({ type: "success", message: "Publicado com sucesso" })
         } catch (error) {
             console.error(error.response)
             window.alert(error.response.data)
         }
     }
 
-    const handleClick = () =>
-    showToast({ type: "success", message: "Publicado com sucesso" });
+    // const handleClick = () => {
+    //     showToast({ type: "success", message: "Publicado com sucesso" });
+    // }
+    
 
     return (
         <div>
@@ -65,7 +68,7 @@ export default function HomePage() {
                     onChange={(e) => setPostContent(e.target.value)}
                     placeholder="Escreva seu post..."></PostCreation>
                     <ToastAnimated />
-                <PostBtn disabled={isLoading} onClick = {() => handleClick()}>Postar</PostBtn>
+                <PostBtn disabled={isLoading}>Postar</PostBtn>
             </CreatePostContainer>
             <FormLine />
             <CardsPosition>

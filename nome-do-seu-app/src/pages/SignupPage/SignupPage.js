@@ -7,6 +7,7 @@ import { goToHomePage } from "../../Router/coordinator"
 import { FormSignup, InputSignup, BotaoCadastrar, TermosContrato, CabeçalhoSignUp, PasswordView } from "./signupStyle"
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
+import ToastAnimated, { showToast } from "../../Components/Toast/Toast"
 
 export default function SignUpPage() {
 
@@ -52,7 +53,12 @@ export default function SignUpPage() {
         } catch (error) {
             setIsLoading(false)
             console.error(error.response)
-            window.alert(error.response.data)
+            // window.alert(error.response.data)
+            if(typeof error.response.data === "string") {
+                showToast({ type: "error", message: `${error.response.data}`})
+            } else {
+                showToast({ type: "error", message: "Verifique suas informações" })
+            }
         }
     }
 
@@ -81,6 +87,8 @@ export default function SignUpPage() {
                     value={form.password}
                     onChange={onChangeForm}
                     placeholder="Senha"
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,12}$"
+                    title="Sua senha deve ter entre 8 e 12 caracteres, sendo um maíusculo, um número e um caracter especial"
                     type={showPassword ? "text" : "password"}
                     autoComplete="current-password"
                 />
@@ -109,6 +117,7 @@ export default function SignUpPage() {
                     <label for="exemple1">Eu concordo em receber email sobre coisas legais no Labeddit</label>
                 </div>
                 <BotaoCadastrar disabled={isLoading}>Cadastrar</BotaoCadastrar>
+                <ToastAnimated />
             </FormSignup>
         </div>
     )

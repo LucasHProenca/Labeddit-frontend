@@ -8,6 +8,7 @@ import { FormLogin, LinhaEntreBotoes, SeparacaoBotoes, LogoContainer, ImgLogo, C
 import { globalContext } from "../../GlobalState/GlobalStateContext";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
+import ToastAnimated, { showToast } from "../../Components/Toast/Toast"
 
 export default function LoginPage() {
 
@@ -54,7 +55,12 @@ export default function LoginPage() {
         } catch (error) {
             setIsLoading(false)
             console.error(error.response)
-            window.alert(error.response.data)
+            // window.alert(error.response.data)
+            if(typeof error.response.data === "string") {
+                showToast({ type: "error", message: `${error.response.data}`})
+            } else {
+                showToast({ type: "error", message: "Verifique suas informações" })
+            }
         }
     }
 
@@ -100,6 +106,7 @@ export default function LoginPage() {
                     />
                 )}
                 </PasswordView>
+                <ToastAnimated />
                 <BotaoContinuar disabled={isLoading}>Continuar</BotaoContinuar>
             </FormLogin>
             <LinhaEntreBotoes></LinhaEntreBotoes>
