@@ -14,6 +14,8 @@ height: 13.1rem;
 flex-shrink: 0;
 border-radius: 1.2rem;
 background: #EDEDED;
+font-size: 1.4rem;
+padding: 0px 50px 0px 20px;
 `
 
 export const CommentBtn = styled.button `

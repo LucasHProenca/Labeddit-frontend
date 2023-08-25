@@ -12,7 +12,8 @@ export const InputSignup = styled.input`
 width: 36.3rem;
 height: 6rem;
 flex-shrink: 0;
-
+font-size: 1.4rem;
+padding: 0px 50px 0px 20px;
 `
 
 export const BotaoCadastrar = styled.button`
@@ -54,10 +55,24 @@ line-height: normal;
 `
 
 export const CabeçalhoSignUp = styled.h1`
+display: flex;
 color: #373737;
 font-family: IBM Plex Sans;
 font-size: 3.3rem;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
+justify-content: center;
+`
+
+export const PasswordView = styled.div`
+position: relative;
+
+.eye {
+    cursor: pointer;
+    position: absolute;
+    right: 5%;
+    top: 40%;
+    font-size: 1.4rem;
+}
 `
