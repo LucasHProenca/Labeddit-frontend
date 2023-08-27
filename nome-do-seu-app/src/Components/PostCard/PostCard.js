@@ -4,7 +4,22 @@ import { useLocation, useNavigate } from "react-router"
 import { BASE_URL } from "../../constants/constants"
 import { globalContext } from "../../GlobalState/GlobalStateContext"
 import { goToCommentsPage } from "../../Router/coordinator"
-import { CardContainer, PostCreator, ContentPost, PostInformation, LikeContainer, LikeRate, CommentsContainer, CommentsQuantity } from "./postCardStyle"
+import {
+    CardContainer,
+    PostCreator,
+    ContentPost,
+    PostInformation,
+    LikeContainer,
+    LikeRate,
+    CommentsContainer,
+    CommentsQuantity,
+    ContainerModal,
+    FadeModal
+} from "./postCardStyle"
+import { AiFillEdit, AiFillDelete } from "react-icons/ai"
+import { PiArrowFatUpDuotone, PiArrowFatDownDuotone } from "react-icons/pi"
+import { BiMessage } from "react-icons/bi"
+import EditModal from "../Modal/editModal"
 
 export default function PostCard(props) {
 
@@ -12,9 +27,10 @@ export default function PostCard(props) {
     const navigate = useNavigate()
     const context = useContext(globalContext)
     const { getPosts } = context
+    const [postContent, setPostContent] = useState("")
     let params = useLocation()
-
     const [isLoading, setIsLoading] = useState(false)
+    const [isOpenModal, setIsOpenModal] = useState(false)
 
     const deletePost = async () => {
         setIsLoading(true)
@@ -32,6 +48,35 @@ export default function PostCard(props) {
 
             setIsLoading(false)
             getPosts()
+        } catch (error) {
+            console.error(error.response)
+            window.alert(error.response.data)
+        }
+    }
+
+    const editPost = async (e) => {
+        e.preventDefault()
+
+        setIsLoading(true)
+
+        try {
+            const token = window.localStorage.getItem("token")
+
+            const config = {
+                headers: {
+                    Authorization: token
+                }
+            }
+
+            const body = {
+                content: postContent
+            }
+
+            await axios.put(BASE_URL + `/posts/${post.id}`, body, config)
+            setPostContent("")
+            setIsLoading(false)
+            getPosts()
+            // showToast({ type: "success", message: "Editado com sucesso" })
         } catch (error) {
             console.error(error.response)
             window.alert(error.response.data)
@@ -104,37 +149,60 @@ export default function PostCard(props) {
         }
         return number
     }
-
     const screenRender = () => {
         if (params.pathname === "/posts") {
-            return <CardContainer>
+            return <><CardContainer>
                 <PostCreator>Enviado por: {post.creator.name}</PostCreator>
                 <ContentPost>{post.content}</ContentPost>
                 <PostInformation>
                     <LikeContainer>
-                        <button class="like" onClick={() => doLike()}>⇧</button>
+                        <PiArrowFatUpDuotone class="like" onClick={() => doLike()}>⇧</PiArrowFatUpDuotone>
                         <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <button class="dislike" onClick={() => doDislike()}>⇩</button>
+                        <PiArrowFatDownDuotone class="dislike" onClick={() => doDislike()}>⇩</PiArrowFatDownDuotone>
                     </LikeContainer>
                     <CommentsContainer>
-                        <block onClick={() => goToCommentsPage(navigate, id)}>💬</block>
+                        <BiMessage onClick={() => goToCommentsPage(navigate, id)}></BiMessage>
                         <CommentsQuantity>{post.comments}</CommentsQuantity>
                     </CommentsContainer>
-                    <block class = "trash"onClick={() => deletePost()}>🗑</block>
+                    <AiFillEdit id="open-modal" onClick={() => setIsOpenModal(true)} />
+                    <AiFillDelete class="trash" onClick={() => deletePost()}></AiFillDelete>
                 </PostInformation>
             </CardContainer>
+                <EditModal isOpenModal={isOpenModal} setOpenModal = {() => setIsOpenModal(!isOpenModal)} >
+                <CardContainer>
+                <PostCreator>Enviado por: {post.creator.name}</PostCreator>
+                <ContentPost>{post.content}</ContentPost>
+                <PostInformation>
+                    <LikeContainer>
+                        <PiArrowFatUpDuotone class="like" onClick={() => doLike()}></PiArrowFatUpDuotone>
+                        <LikeRate>{handleNumbers(rate)}</LikeRate>
+                        <PiArrowFatDownDuotone class="dislike" onClick={() => doDislike()}>⇩</PiArrowFatDownDuotone>
+                    </LikeContainer>
+                    <CommentsContainer>
+                        <BiMessage></BiMessage>
+                        <CommentsQuantity>{post.comments}</CommentsQuantity>
+                    </CommentsContainer>
+                </PostInformation>
+            </CardContainer>
+            <form onSubmit = {editPost}>
+                <input value={postContent} onChange = {(e) => setPostContent(e.target.value)} placeholder = "Edit seu post">
+                </input>
+                <button>Postar</button>
+            </form>
+                </EditModal>
+            </>
         } else if (params.pathname.includes("/post-comments/")) {
             return <CardContainer>
                 <PostCreator>Enviado por: {post.creator.name}</PostCreator>
                 <ContentPost>{post.content}</ContentPost>
                 <PostInformation>
                     <LikeContainer>
-                        <block class="like" onClick={() => doLike()}>⇧</block>
+                        <PiArrowFatUpDuotone class="like" onClick={() => doLike()}></PiArrowFatUpDuotone>
                         <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <block class="dislike" onClick={() => doDislike()}>⇩</block>
+                        <PiArrowFatDownDuotone class="dislike" onClick={() => doDislike()}>⇩</PiArrowFatDownDuotone>
                     </LikeContainer>
                     <CommentsContainer>
-                        <block>💬</block>
+                        <BiMessage></BiMessage>
                         <CommentsQuantity>{post.comments}</CommentsQuantity>
                     </CommentsContainer>
                 </PostInformation>
