@@ -13,13 +13,16 @@ import {
     LikeRate,
     CommentsContainer,
     CommentsQuantity,
-    ContainerModal,
-    FadeModal
+    CardContainerModal,
+    InputModal,
+    BotaoEditPost,
+    FormModal,
 } from "./postCardStyle"
 import { AiFillEdit, AiFillDelete } from "react-icons/ai"
 import { PiArrowFatUpDuotone, PiArrowFatDownDuotone } from "react-icons/pi"
 import { BiMessage } from "react-icons/bi"
 import EditModal from "../Modal/editModal"
+import ToastAnimated, { showToast } from "../../Components/Toast/Toast"
 
 export default function PostCard(props) {
 
@@ -76,10 +79,15 @@ export default function PostCard(props) {
             setPostContent("")
             setIsLoading(false)
             getPosts()
-            // showToast({ type: "success", message: "Editado com sucesso" })
+            showToast({ type: "success", message: "Editado com sucesso" })
         } catch (error) {
             console.error(error.response)
-            window.alert(error.response.data)
+            // window.alert(error.response.data)
+            if(typeof error.response.data === "string") {
+                showToast({ type: "error", message: `${error.response.data}`})
+            } else {
+                showToast({ type: "error", message: "Não é possível publicar um post vazio" })
+            }
         }
     }
 
@@ -156,9 +164,9 @@ export default function PostCard(props) {
                 <ContentPost>{post.content}</ContentPost>
                 <PostInformation>
                     <LikeContainer>
-                        <PiArrowFatUpDuotone class="like" onClick={() => doLike()}>⇧</PiArrowFatUpDuotone>
+                        <PiArrowFatUpDuotone class="like" onClick={() => doLike()}></PiArrowFatUpDuotone>
                         <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <PiArrowFatDownDuotone class="dislike" onClick={() => doDislike()}>⇩</PiArrowFatDownDuotone>
+                        <PiArrowFatDownDuotone class="dislike" onClick={() => doDislike()}></PiArrowFatDownDuotone>
                     </LikeContainer>
                     <CommentsContainer>
                         <BiMessage onClick={() => goToCommentsPage(navigate, id)}></BiMessage>
@@ -169,27 +177,27 @@ export default function PostCard(props) {
                 </PostInformation>
             </CardContainer>
                 <EditModal isOpenModal={isOpenModal} setOpenModal = {() => setIsOpenModal(!isOpenModal)} >
-                <CardContainer>
+                <CardContainerModal>
                 <PostCreator>Enviado por: {post.creator.name}</PostCreator>
                 <ContentPost>{post.content}</ContentPost>
                 <PostInformation>
                     <LikeContainer>
                         <PiArrowFatUpDuotone class="like" onClick={() => doLike()}></PiArrowFatUpDuotone>
                         <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <PiArrowFatDownDuotone class="dislike" onClick={() => doDislike()}>⇩</PiArrowFatDownDuotone>
+                        <PiArrowFatDownDuotone class="dislike" onClick={() => doDislike()}></PiArrowFatDownDuotone>
                     </LikeContainer>
                     <CommentsContainer>
                         <BiMessage></BiMessage>
                         <CommentsQuantity>{post.comments}</CommentsQuantity>
                     </CommentsContainer>
                 </PostInformation>
-            </CardContainer>
-            <form onSubmit = {editPost}>
-                <input value={postContent} onChange = {(e) => setPostContent(e.target.value)} placeholder = "Edit seu post">
-                </input>
-                <button>Postar</button>
-            </form>
+            </CardContainerModal>
+            <FormModal onSubmit = {editPost}>
+                <InputModal value={postContent} onChange = {(e) => setPostContent(e.target.value)} placeholder = "Edite seu post"/>
+                <BotaoEditPost>Postar</BotaoEditPost>
+            </FormModal>
                 </EditModal>
+                <ToastAnimated />
             </>
         } else if (params.pathname.includes("/post-comments/")) {
             return <CardContainer>

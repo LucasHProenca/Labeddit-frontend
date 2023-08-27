@@ -187,3 +187,59 @@ pointer-events: all;
     pointer-events: none
 }
 `
+
+export const CardContainerModal = styled.div`
+display: flex;
+width: 36.4rem;
+max-width: 90%;
+padding: 0.9rem 1rem;
+flex-direction: column;
+align-items: flex-start;
+gap: 1rem;
+border-radius: 1.2rem;
+border: 1px solid #E0E0E0;
+background: #FBFBFB;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: wrap;
+`
+
+export const InputModal = styled.input`
+width: 50%;
+max-width: 70%;
+margin-top: 3%;
+height: 10%;
+flex-shrink: 0;
+font-size: 1rem;
+padding: 0px 50px 0px 20px;
+border-radius: 2.7rem;
+`
+
+export const BotaoEditPost = styled.button`
+display: flex;
+width: 100px;
+justify-content: center;
+align-items: center;
+border-radius: 2.7rem;
+background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
+color: #FFF;
+margin-top: 3%;
+text-align: center;
+font-family: Noto Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+opacity: 0.9;
+cursor: pointer;
+
+:hover {
+    opacity: 1;
+}
+`
+
+export const FormModal = styled.form`
+display: flex;
+justify-content: flex-start;
+align-items: center;
+`
