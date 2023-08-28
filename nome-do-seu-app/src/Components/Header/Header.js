@@ -1,15 +1,18 @@
 import { useContext, useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import { globalContext } from "../../GlobalState/GlobalStateContext"
-import { goToHomePage, goToLoginPage } from "../../Router/coordinator"
-import { HeaderContainer, ImgHeader, ButtonHeader, BtnBackPage } from "./headerStyle"
+import { goToHomePage, goToLoginPage} from "../../Router/coordinator"
+import { HeaderContainer, ImgHeader, ButtonHeader} from "./headerStyle"
 import Logo from "../../assets/midia/LogoHeader.png"
+import {TfiClose} from "react-icons/tfi"
+
+
 export default function Header() {
 
     let params = useLocation()
     const navigate = useNavigate()
     const context = useContext(globalContext)
-    const { isLoggedIn, setIsLoggedIn } = context
+    const { isLoggedIn, setIsLoggedIn} = context
 
     const buttonAction = () => {
         if (isLoggedIn) {
@@ -42,15 +45,14 @@ export default function Header() {
             </HeaderContainer>
         } else if (params.pathname.includes("/post-comments/")) {
             return <HeaderContainer>
-                <BtnBackPage onClick={() => goToHomePage(navigate)}>
-                    ❌
-                </BtnBackPage>
+                <TfiClose class = "closeBtn" onClick={() => goToHomePage(navigate)}>
+                </TfiClose>
                 <ImgHeader src={Logo} alt = "logo"  />
                 <ButtonHeader onClick={() => buttonAction()}>
                     {buttonText}
                 </ButtonHeader>
             </HeaderContainer>
-        }
+        } 
     }
 
     return (

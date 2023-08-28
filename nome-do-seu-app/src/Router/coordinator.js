@@ -13,3 +13,7 @@ export const goToLoginPage = (navigate) => {
 export const goToCommentsPage = (navigate, id) => {
     navigate(`/post-comments/${id}`)
 }
+
+// export const goToUserPage = (navigate) => {
+//     navigate("/user")
+// }

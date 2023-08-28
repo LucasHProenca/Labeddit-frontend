@@ -36,11 +36,34 @@ export const GlobalState = ({children}) => {
         }
     }
 
+    const [users, setUsers] = useState([])
+
+    const getUsers = async () => {
+        try {
+            const token = window.localStorage.getItem("token")
+
+            const config = {
+                headers: {
+                    Authorization: token
+                }
+            }
+
+            const response = await axios.get(BASE_URL + "/users", config)
+            setUsers(response.data)
+
+        } catch (error) {
+            console.error(error.response)
+            window.alert(error.response.data)
+        }
+    }
+
     const context = {
         isLoggedIn,
         setIsLoggedIn,
         posts,
-        getPosts
+        getPosts,
+        users,
+        getUsers
     }
 
     return (

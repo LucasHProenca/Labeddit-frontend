@@ -59,7 +59,15 @@ flex-shrink: 0;
 border-radius: 2.8rem;
 border: 0.797px solid #ECECEC;
 
-.like {
+.like-active {
+    color: #FF0063;
+}
+
+.dislike-active {
+    color: #FF0063;
+}
+
+/* .like {
     border: none;
     background: white;
     cursor: pointer;
@@ -75,7 +83,7 @@ border: 0.797px solid #ECECEC;
 }
 .dislike:focus {
     color:orange;
-}
+} */
 
 `
 

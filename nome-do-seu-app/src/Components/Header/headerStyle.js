@@ -7,6 +7,13 @@ height: 10vh;
 justify-content: space-between;
 align-items: center;
 background: #EDEDED;
+
+.closeBtn {
+position: absolute;
+left: 10%;
+font-size: 1.8rem;
+font-weight: 600
+}
 `
 
 export const ImgHeader = styled.img`
@@ -27,11 +34,4 @@ font-weight: 600;
 line-height: normal;
 position: absolute;
 left: 80%;
-`
-
-export const BtnBackPage = styled.p `
-position: absolute;
-left: 10%;
-font-size: 1.8rem;
-font-weight: 600;
 `

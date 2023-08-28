@@ -45,23 +45,14 @@ flex-shrink: 0;
 border-radius: 2.8rem;
 border: 0.797px solid #ECECEC;
 
-.like {
-    border: none;
-    background: white;
-    cursor: pointer;
-}
-.like:focus{
-    color: orange;
+.like-active {
+    color: #FF0063;
 }
 
-.dislike {
-    border: none;
-    background: white;
-    cursor:pointer;
+.dislike-active {
+    color: #FF0063;
 }
-.dislike:focus {
-    color:orange;
-}
+
 `
 
 export const LikeRate = styled.p`

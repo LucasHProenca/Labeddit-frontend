@@ -63,7 +63,7 @@ export default function HomePage() {
     return (
         <div>
             <CreatePostContainer onSubmit={createPost}>
-                <PostCreation name="areaDeTexto" id="areaDeTexto" cols="30" rows="10" required
+                <PostCreation name="areaDeTexto" id="areaDeTexto" cols="5" rows="5" maxLength={200} required
                     value={postContent}
                     onChange={(e) => setPostContent(e.target.value)}
                     placeholder="Escreva seu post..."></PostCreation>
@@ -75,7 +75,6 @@ export default function HomePage() {
                 {posts
                     .sort((a, b) => {
                         return new Date(b.createdAt) - new Date(a.createdAt)
-
                     })
                     .map((post) => {
                         return <PostCard key={post.id} post={post} id={post.id} />

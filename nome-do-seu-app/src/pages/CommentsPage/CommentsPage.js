@@ -103,7 +103,7 @@ export default function CommentsPage () {
             {result()}
             </CardsPosition>
             <CreateCommentContainer onSubmit={createComment}>
-            <CommentCreation name="areaDeTexto" id="areaDeTexto" cols="30" rows="10" required 
+            <CommentCreation name="areaDeTexto" id="areaDeTexto" cols="5" rows="5" maxLength={200} required 
             value={commentContent} 
             onChange = {(e) => setCommentContent(e.target.value)}
                 placeholder="Adicionar comentário"></CommentCreation>
@@ -111,7 +111,11 @@ export default function CommentsPage () {
             </CreateCommentContainer>
             <CommentLine/>
             <CardsPosition>
-                {comments.map((comment) => {
+                {comments
+                .sort((a, b) => {
+                    return new Date(b.createdAt) - new Date(a.createdAt)
+                })
+                .map((comment) => {
                     return <CommentCard key = {comment.id} comment = {comment} getComments = {getComments}/>
                 })}
             </CardsPosition>

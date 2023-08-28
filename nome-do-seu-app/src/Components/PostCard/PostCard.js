@@ -34,6 +34,7 @@ export default function PostCard(props) {
     let params = useLocation()
     const [isLoading, setIsLoading] = useState(false)
     const [isOpenModal, setIsOpenModal] = useState(false)
+    const [activeBtn, setActiveBtn] = useState("none")
 
     const deletePost = async () => {
         setIsLoading(true)
@@ -51,9 +52,11 @@ export default function PostCard(props) {
 
             setIsLoading(false)
             getPosts()
+            showToast({ type: "success", message: "Post apagado com sucesso" })
         } catch (error) {
             console.error(error.response)
-            window.alert(error.response.data)
+            // window.alert(error.response.data)
+            showToast({ type: "error", message: `${error.response.data}`})
         }
     }
 
@@ -111,11 +114,21 @@ export default function PostCard(props) {
 
             setIsLoading(false)
             getPosts()
+            if(activeBtn === "none") {
+                setActiveBtn("like")
+            } else if (activeBtn === "dislike") {
+                setActiveBtn("like")
+            } else {
+                setActiveBtn("none")
+            }
         } catch (error) {
             console.error(error.response)
-            window.alert(error.response.data)
+            // window.alert(error.response.data)
+            showToast({ type: "error", message: `${error.response.data}`})
         }
     }
+
+    let rate = post.likes - post.dislikes
 
     const doDislike = async () => {
         setIsLoading(true)
@@ -137,13 +150,24 @@ export default function PostCard(props) {
 
             setIsLoading(false)
             getPosts()
+
+            if(activeBtn === "none" && rate === 0) {
+                setActiveBtn("dislike")
+            } else if (activeBtn === "none") {
+                setActiveBtn("dislike")
+            } else if (activeBtn === "like"){
+                setActiveBtn("dislike")
+            } else {
+                setActiveBtn("none")
+            }
         } catch (error) {
             console.error(error.response)
-            window.alert(error.response.data)
+            // window.alert(error.response.data)
+            showToast({ type: "error", message: `${error.response.data}`})
         }
     }
 
-    let rate = post.likes - post.dislikes
+    
 
     const handleNumbers = (number) => {
         if (number < 0) {
@@ -164,9 +188,9 @@ export default function PostCard(props) {
                 <ContentPost>{post.content}</ContentPost>
                 <PostInformation>
                     <LikeContainer>
-                        <PiArrowFatUpDuotone class="like" onClick={() => doLike()}></PiArrowFatUpDuotone>
+                        <PiArrowFatUpDuotone class = {`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
                         <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <PiArrowFatDownDuotone class="dislike" onClick={() => doDislike()}></PiArrowFatDownDuotone>
+                        <PiArrowFatDownDuotone class = {`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
                     </LikeContainer>
                     <CommentsContainer>
                         <BiMessage onClick={() => goToCommentsPage(navigate, id)}></BiMessage>
@@ -182,9 +206,9 @@ export default function PostCard(props) {
                 <ContentPost>{post.content}</ContentPost>
                 <PostInformation>
                     <LikeContainer>
-                        <PiArrowFatUpDuotone class="like" onClick={() => doLike()}></PiArrowFatUpDuotone>
+                        <PiArrowFatUpDuotone class= {`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
                         <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <PiArrowFatDownDuotone class="dislike" onClick={() => doDislike()}></PiArrowFatDownDuotone>
+                        <PiArrowFatDownDuotone class= {`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
                     </LikeContainer>
                     <CommentsContainer>
                         <BiMessage></BiMessage>
@@ -205,9 +229,9 @@ export default function PostCard(props) {
                 <ContentPost>{post.content}</ContentPost>
                 <PostInformation>
                     <LikeContainer>
-                        <PiArrowFatUpDuotone class="like" onClick={() => doLike()}></PiArrowFatUpDuotone>
+                        <PiArrowFatUpDuotone class={`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
                         <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <PiArrowFatDownDuotone class="dislike" onClick={() => doDislike()}>⇩</PiArrowFatDownDuotone>
+                        <PiArrowFatDownDuotone class={`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}>⇩</PiArrowFatDownDuotone>
                     </LikeContainer>
                     <CommentsContainer>
                         <BiMessage></BiMessage>

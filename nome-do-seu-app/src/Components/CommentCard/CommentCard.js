@@ -30,6 +30,7 @@ export default function CommentCard(props) {
     // console.log(pathParams)
     const [isOpenModal, setIsOpenModal] = useState(false)
     const [commentContent, setCommentContent] = useState("")
+    const [activeBtn, setActiveBtn] = useState("none")
 
     const editComment = async (e) => {
         e.preventDefault()
@@ -82,9 +83,11 @@ export default function CommentCard(props) {
             setIsLoading(false)
             getComments()
             getPosts()
+            showToast({ type: "success", message: "Comentário apagado com sucesso" })
         } catch (error) {
             console.error(error.response)
-            window.alert(error.response.data)
+            // window.alert(error.response.data)
+            showToast({ type: "error", message: `${error.response.data}`})
         }
     }
 
@@ -107,9 +110,18 @@ export default function CommentCard(props) {
             await axios.put(BASE_URL + `/comments/${comment.id}/like`, body, config)
             setIsLoading(false)
             getComments()
+
+            if(activeBtn === "none") {
+                setActiveBtn("like")
+            } else if (activeBtn === "dislike") {
+                setActiveBtn("like")
+            } else {
+                setActiveBtn("none")
+            }
         } catch (error) {
             console.error(error.response)
-            window.alert(error.response.data)
+            // window.alert(error.response.data)
+            showToast({ type: "error", message: `${error.response.data}`})
         }
     }
 
@@ -132,9 +144,20 @@ export default function CommentCard(props) {
             await axios.put(BASE_URL + `/comments/${comment.id}/like`, body, config)
             setIsLoading(false)
             getComments()
+
+            if(activeBtn === "none" && rate === 0) {
+                setActiveBtn("dislike")
+            } else if (activeBtn === "none") {
+                setActiveBtn("dislike")
+            } else if (activeBtn === "like"){
+                setActiveBtn("dislike")
+            } else {
+                setActiveBtn("none")
+            }
         } catch (error) {
             console.error(error.response)
-            window.alert(error.response.data)
+            // window.alert(error.response.data)
+            showToast({ type: "error", message: `${error.response.data}`})
         }
     }
 
@@ -159,9 +182,9 @@ export default function CommentCard(props) {
                 <ContentComment>{comment.content}</ContentComment>
                 <CommentInformation>
                     <LikeContainer>
-                        <PiArrowFatUpDuotone class="like" onClick={() => doLike()}></PiArrowFatUpDuotone>
+                        <PiArrowFatUpDuotone class={`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
                         <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <PiArrowFatDownDuotone class="dislike " onClick={() => doDislike()}></PiArrowFatDownDuotone>
+                        <PiArrowFatDownDuotone class={`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
                     </LikeContainer>
                     <AiFillEdit id="open-modal" onClick={() => setIsOpenModal(true)} />
                     <AiFillDelete class="trash" onClick={() => deleteComment()}></AiFillDelete>
@@ -173,9 +196,9 @@ export default function CommentCard(props) {
                 <ContentComment>{comment.content}</ContentComment>
                 <CommentInformation>
                     <LikeContainer>
-                        <PiArrowFatUpDuotone class="like" onClick={() => doLike()}></PiArrowFatUpDuotone>
+                        <PiArrowFatUpDuotone class={`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
                         <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <PiArrowFatDownDuotone class="dislike" onClick={() => doDislike()}></PiArrowFatDownDuotone>
+                        <PiArrowFatDownDuotone class= {`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
                     </LikeContainer>
                 </CommentInformation>
             </CardContainerModal>
