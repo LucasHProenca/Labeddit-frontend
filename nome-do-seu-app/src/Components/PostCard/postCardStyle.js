@@ -67,24 +67,6 @@ border: 0.797px solid #ECECEC;
     color: #FF0063;
 }
 
-/* .like {
-    border: none;
-    background: white;
-    cursor: pointer;
-}
-.like:focus{
-    color: orange;
-}
-
-.dislike {
-    border: none;
-    background: white;
-    cursor:pointer;
-}
-.dislike:focus {
-    color:orange;
-} */
-
 `
 
 
