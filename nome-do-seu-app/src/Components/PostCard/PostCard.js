@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router"
 import { BASE_URL } from "../../constants/constants"
 import { globalContext } from "../../GlobalState/GlobalStateContext"
@@ -17,12 +17,15 @@ import {
     InputModal,
     BotaoEditPost,
     FormModal,
+    FormDelModal,
+    DivDeleteModal
 } from "./postCardStyle"
 import { AiFillEdit, AiFillDelete } from "react-icons/ai"
 import { PiArrowFatUpDuotone, PiArrowFatDownDuotone } from "react-icons/pi"
 import { BiMessage } from "react-icons/bi"
 import EditModal from "../Modal/editModal"
 import ToastAnimated, { showToast } from "../../Components/Toast/Toast"
+import DeleteModal from "../Modal/deleteModal"
 
 export default function PostCard(props) {
 
@@ -34,11 +37,24 @@ export default function PostCard(props) {
     let params = useLocation()
     const [isLoading, setIsLoading] = useState(false)
     const [isOpenModal, setIsOpenModal] = useState(false)
+    const [isOpenDelModal, setIsOpenDelModal] = useState(false)
     const [activeBtn, setActiveBtn] = useState("none")
+
+    useEffect(() => {
+        if(window.localStorage.getItem("token")){
+            const data = window.localStorage.getItem('likes')
+            setActiveBtn(JSON.parse(data))
+        }
+    }, [])
+
+    useEffect(() => {
+        if(window.localStorage.getItem("token")) {
+            window.localStorage.setItem('likes', JSON.stringify(activeBtn))
+        }
+    }, [activeBtn])
 
     const deletePost = async () => {
         setIsLoading(true)
-
         try {
             const token = window.localStorage.getItem("token")
 
@@ -188,16 +204,16 @@ export default function PostCard(props) {
                 <ContentPost>{post.content}</ContentPost>
                 <PostInformation>
                     <LikeContainer>
-                        <PiArrowFatUpDuotone class = {`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
+                        <PiArrowFatUpDuotone id="likebtn" class = {`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
                         <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <PiArrowFatDownDuotone class = {`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
+                        <PiArrowFatDownDuotone id="likebtn" class = {`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
                     </LikeContainer>
                     <CommentsContainer>
                         <BiMessage onClick={() => goToCommentsPage(navigate, id)}></BiMessage>
                         <CommentsQuantity>{post.comments}</CommentsQuantity>
                     </CommentsContainer>
-                    <AiFillEdit id="open-modal" onClick={() => setIsOpenModal(true)} />
-                    <AiFillDelete class="trash" onClick={() => deletePost()}></AiFillDelete>
+                    <AiFillEdit id="open-modal" class = "editbtn" onClick={() => setIsOpenModal(true)} />
+                    <AiFillDelete class="trash" onClick={() => setIsOpenDelModal(true)}></AiFillDelete>
                 </PostInformation>
             </CardContainer>
                 <EditModal isOpenModal={isOpenModal} setOpenModal = {() => setIsOpenModal(!isOpenModal)} >
@@ -206,9 +222,9 @@ export default function PostCard(props) {
                 <ContentPost>{post.content}</ContentPost>
                 <PostInformation>
                     <LikeContainer>
-                        <PiArrowFatUpDuotone class= {`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
+                        <PiArrowFatUpDuotone id="likebtn" class= {`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
                         <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <PiArrowFatDownDuotone class= {`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
+                        <PiArrowFatDownDuotone id="likebtn" class= {`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
                     </LikeContainer>
                     <CommentsContainer>
                         <BiMessage></BiMessage>
@@ -222,6 +238,30 @@ export default function PostCard(props) {
             </FormModal>
                 </EditModal>
                 <ToastAnimated />
+                <DeleteModal isOpenDelModal = {isOpenDelModal} setIsOpenDelModal = {() => setIsOpenDelModal(!isOpenDelModal)} >
+                <CardContainerModal>
+                <PostCreator>Enviado por: {post.creator.name}</PostCreator>
+                <ContentPost>{post.content}</ContentPost>
+                <PostInformation>
+                    <LikeContainer>
+                        <PiArrowFatUpDuotone id="likebtn" class= {`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
+                        <LikeRate>{handleNumbers(rate)}</LikeRate>
+                        <PiArrowFatDownDuotone id="likebtn" class= {`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
+                    </LikeContainer>
+                    <CommentsContainer>
+                        <BiMessage></BiMessage>
+                        <CommentsQuantity>{post.comments}</CommentsQuantity>
+                    </CommentsContainer>
+                </PostInformation>
+            </CardContainerModal>
+                    <FormDelModal>
+                        <h3>Tem certeza que deseja excluir seu post?</h3>
+                        <DivDeleteModal>
+                        <span onClick={() => setIsOpenDelModal(!isOpenDelModal)}>Não</span>
+                        <span onClick={() => deletePost()}>Sim</span>
+                        </DivDeleteModal>
+                    </FormDelModal>
+                </DeleteModal>
             </>
         } else if (params.pathname.includes("/post-comments/")) {
             return <CardContainer>
@@ -229,9 +269,9 @@ export default function PostCard(props) {
                 <ContentPost>{post.content}</ContentPost>
                 <PostInformation>
                     <LikeContainer>
-                        <PiArrowFatUpDuotone class={`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
+                        <PiArrowFatUpDuotone id="likebtn" class={`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
                         <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <PiArrowFatDownDuotone class={`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}>⇩</PiArrowFatDownDuotone>
+                        <PiArrowFatDownDuotone id="likebtn" class={`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}>⇩</PiArrowFatDownDuotone>
                     </LikeContainer>
                     <CommentsContainer>
                         <BiMessage></BiMessage>

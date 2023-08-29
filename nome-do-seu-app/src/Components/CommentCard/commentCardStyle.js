@@ -45,6 +45,10 @@ flex-shrink: 0;
 border-radius: 2.8rem;
 border: 0.797px solid #ECECEC;
 
+#likebtn {
+    cursor: pointer;
+}
+
 .like-active {
     color: #FF0063;
 }
@@ -71,6 +75,14 @@ display: flex;
 justify-content: space-around;
 align-items: center;
 gap: 1.5rem;
+
+.editbtn {
+    cursor: pointer;
+}
+
+.editbtn:hover {
+    color: orange;
+}
 
 .trash:hover{
     color: orange;
@@ -134,4 +146,25 @@ export const FormModal = styled.form`
 display: flex;
 justify-content: flex-start;
 align-items: center;
+`
+
+export const DivDeleteModal = styled.div `
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+
+span {
+    cursor: pointer;
+}
+`
+
+export const FormDelModal = styled.form`
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+
+h3 {
+    display: flex;
+    justify-content: center;
+}
 `

@@ -14,6 +14,13 @@ height: 6rem;
 flex-shrink: 0;
 font-size: 1.4rem;
 padding: 0px 50px 0px 20px;
+
+@media screen and (min-device-width : 320px) and (max-device-width : 760px) {
+height: 10vh;
+width: 80vw;
+padding: 0px 30px 0px 10px;
+font-size: 1.2rem;
+}
 `
 
 export const BotaoCadastrar = styled.button`
@@ -33,6 +40,13 @@ font-size: 1.4rem;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
+
+@media screen and (min-device-width : 320px) and (max-device-width : 760px) {
+height: 10vh;
+width: 90vw;
+font-size: 1.4rem;
+padding: 1rem;
+}
 `
 
 export const TermosContrato = styled.p`
@@ -52,6 +66,17 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 }
+
+@media screen and (min-device-width : 320px) and (max-device-width : 760px) {
+width: 85vw;
+font-size: 1.2rem;
+padding: 1rem;
+
+a{
+font-size: 1.2rem;
+}
+}
+
 `
 
 export const CabeçalhoSignUp = styled.h1`
@@ -63,6 +88,11 @@ font-style: normal;
 font-weight: 700;
 line-height: normal;
 justify-content: center;
+
+@media screen and (min-device-width : 320px) and (max-device-width : 760px) {
+font-size: 2.4rem;
+margin-bottom: 25%;
+}
 `
 
 export const PasswordView = styled.div`
@@ -74,5 +104,22 @@ position: relative;
     right: 5%;
     top: 40%;
     font-size: 1.4rem;
+}
+`
+
+export const CheckboxContract = styled.div `
+color: #000;
+font-family: Noto Sans;
+font-size: 1.4rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+width: 36.5rem;
+
+@media screen and (min-device-width : 320px) and (max-device-width : 760px) {
+width: 85vw;
+font-size: 1.2rem;
+padding: 1rem;
+
 }
 `

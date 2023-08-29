@@ -12,7 +12,16 @@ background: #EDEDED;
 position: absolute;
 left: 10%;
 font-size: 1.8rem;
-font-weight: 600
+font-weight: 600;
+cursor: pointer;
+}
+
+.userBtn {
+position: absolute;
+left: 10%;
+font-size: 1.8rem;
+font-weight: 600;
+cursor: pointer;
 }
 `
 
@@ -34,4 +43,9 @@ font-weight: 600;
 line-height: normal;
 position: absolute;
 left: 80%;
+cursor: pointer;
+
+@media screen and (min-device-width : 320px) and (max-device-width : 760px) {
+font-size: 1.4rem;
+}
 `

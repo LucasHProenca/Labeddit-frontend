@@ -13,11 +13,14 @@ import { CardContainer,
     InputModal,
     BotaoEditPost,
     FormModal,
+    FormDelModal,
+    DivDeleteModal,
 } from "./commentCardStyle"
 import { AiFillEdit, AiFillDelete } from "react-icons/ai"
 import { PiArrowFatUpDuotone, PiArrowFatDownDuotone } from "react-icons/pi"
 import EditModal from "../Modal/editModal"
 import ToastAnimated, { showToast } from "../../Components/Toast/Toast"
+import DeleteModal from "../Modal/deleteModal"
 
 export default function CommentCard(props) {
 
@@ -31,6 +34,7 @@ export default function CommentCard(props) {
     const [isOpenModal, setIsOpenModal] = useState(false)
     const [commentContent, setCommentContent] = useState("")
     const [activeBtn, setActiveBtn] = useState("none")
+    const [isOpenDelModal, setIsOpenDelModal] = useState(false)
 
     const editComment = async (e) => {
         e.preventDefault()
@@ -182,12 +186,12 @@ export default function CommentCard(props) {
                 <ContentComment>{comment.content}</ContentComment>
                 <CommentInformation>
                     <LikeContainer>
-                        <PiArrowFatUpDuotone class={`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
+                        <PiArrowFatUpDuotone id="likebtn" class={`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
                         <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <PiArrowFatDownDuotone class={`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
+                        <PiArrowFatDownDuotone id="likebtn" class={`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
                     </LikeContainer>
-                    <AiFillEdit id="open-modal" onClick={() => setIsOpenModal(true)} />
-                    <AiFillDelete class="trash" onClick={() => deleteComment()}></AiFillDelete>
+                    <AiFillEdit id="open-modal" class = "editbtn" onClick={() => setIsOpenModal(true)} />
+                    <AiFillDelete class="trash" onClick={() => setIsOpenDelModal(true)}></AiFillDelete>
                 </CommentInformation>
             </CardContainer>
             <EditModal isOpenModal={isOpenModal} setOpenModal={() => setIsOpenModal(!isOpenModal)}>
@@ -196,9 +200,9 @@ export default function CommentCard(props) {
                 <ContentComment>{comment.content}</ContentComment>
                 <CommentInformation>
                     <LikeContainer>
-                        <PiArrowFatUpDuotone class={`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
+                        <PiArrowFatUpDuotone id="likebtn" class={`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
                         <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <PiArrowFatDownDuotone class= {`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
+                        <PiArrowFatDownDuotone id="likebtn" class= {`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
                     </LikeContainer>
                 </CommentInformation>
             </CardContainerModal>
@@ -208,6 +212,26 @@ export default function CommentCard(props) {
             </FormModal>
             </EditModal>
             <ToastAnimated />
+            <DeleteModal isOpenDelModal = {isOpenDelModal} setIsOpenDelModal = {() => setIsOpenDelModal(!isOpenDelModal)} >
+            <CardContainerModal>
+                <PostCreator>Enviado por: {comment.creator.nickname}</PostCreator>
+                <ContentComment>{comment.content}</ContentComment>
+                <CommentInformation>
+                    <LikeContainer>
+                        <PiArrowFatUpDuotone id="likebtn" class={`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
+                        <LikeRate>{handleNumbers(rate)}</LikeRate>
+                        <PiArrowFatDownDuotone id="likebtn" class= {`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
+                    </LikeContainer>
+                </CommentInformation>
+            </CardContainerModal>
+            <FormDelModal>
+                        <h3>Tem certeza que deseja excluir seu comentário?</h3>
+                        <DivDeleteModal>
+                        <span onClick={() => setIsOpenDelModal(!isOpenDelModal)}>Não</span>
+                        <span onClick={() => deleteComment()}>Sim</span>
+                        </DivDeleteModal>
+                    </FormDelModal>
+            </DeleteModal>
         </>
     )
 }

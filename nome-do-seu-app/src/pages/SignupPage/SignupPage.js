@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { BASE_URL } from "../../constants/constants"
 import { globalContext } from "../../GlobalState/GlobalStateContext"
 import { goToHomePage } from "../../Router/coordinator"
-import { FormSignup, InputSignup, BotaoCadastrar, TermosContrato, CabeçalhoSignUp, PasswordView } from "./signupStyle"
+import { FormSignup, InputSignup, BotaoCadastrar, TermosContrato, CabeçalhoSignUp, PasswordView, CheckboxContract } from "./signupStyle"
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import ToastAnimated, { showToast } from "../../Components/Toast/Toast"
@@ -112,10 +112,10 @@ export default function SignUpPage() {
                         Política de Privacidade
                     </a>
                 </TermosContrato>
-                <div>
+                <CheckboxContract>
                     <input type="checkbox" id="exemple1" />
                     <label for="exemple1">Eu concordo em receber email sobre coisas legais no Labeddit</label>
-                </div>
+                </CheckboxContract>
                 <BotaoCadastrar disabled={isLoading}>Cadastrar</BotaoCadastrar>
                 <ToastAnimated />
             </FormSignup>

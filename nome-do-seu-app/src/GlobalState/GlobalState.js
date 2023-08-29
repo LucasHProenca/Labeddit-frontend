@@ -16,7 +16,7 @@ export const GlobalState = ({children}) => {
     }, [])
 
     const [posts, setPosts] = useState([])
-
+    
     const getPosts = async () => {
         try {
             const token = window.localStorage.getItem("token")
@@ -53,7 +53,7 @@ export const GlobalState = ({children}) => {
 
         } catch (error) {
             console.error(error.response)
-            window.alert(error.response.data)
+            // window.alert(error.response.data)
         }
     }
 

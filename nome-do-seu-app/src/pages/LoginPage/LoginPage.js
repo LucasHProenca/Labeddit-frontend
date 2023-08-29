@@ -65,7 +65,7 @@ export default function LoginPage() {
     }
 
     return (
-        <div>
+        <>
             <LogoContainer>
                 <ImgLogo src={Logo} alt="logo" />
                 <CabecalhoLogin>LabEddit</CabecalhoLogin>
@@ -73,7 +73,6 @@ export default function LoginPage() {
             </LogoContainer>
             <FormLogin onSubmit={login} autoComplete="off">
 
-                <label></label>
                 <InputLogin
                     name={"email"}
                     value={form.email}
@@ -84,7 +83,6 @@ export default function LoginPage() {
                 />
 
                 <PasswordView>
-                <label></label>
                 <InputLogin
                     name={"password"}
                     value={form.password}
@@ -113,6 +111,6 @@ export default function LoginPage() {
             <SeparacaoBotoes>
                 <BotaoCriarConta disabled={isLoading} onClick={() => goToSignupPage(navigate)}>Crie uma conta!</BotaoCriarConta>
             </SeparacaoBotoes>
-        </div>
+        </>
     )
 }

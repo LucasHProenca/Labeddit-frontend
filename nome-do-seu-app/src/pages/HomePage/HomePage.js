@@ -55,11 +55,6 @@ export default function HomePage() {
         }
     }
 
-    // const handleClick = () => {
-    //     showToast({ type: "success", message: "Publicado com sucesso" });
-    // }
-    
-
     return (
         <div>
             <CreatePostContainer onSubmit={createPost}>

@@ -1,4 +1,3 @@
-
 import React from "react";
 import {AiOutlineClose} from "react-icons/ai"
 
@@ -30,17 +29,17 @@ const BUTTON_STYLE = {
 position: 'absolute',
 top: '5%',
 right: '5%',
-cursor: 'pointer'
+cursor: 'pointer',
 }
 
-export default function EditModal ({isOpenModal, children, setOpenModal}) {
+export default function DeleteModal ({isOpenDelModal, children, setIsOpenDelModal}) {
 
-    if (isOpenModal) {
+    if (isOpenDelModal) {
         return<>
         <div style={BACKGROUND_STYLE}>
             <div style={MODAL_STYLE}>
                 {children}
-                <AiOutlineClose style={BUTTON_STYLE} onClick={() => setOpenModal()}></AiOutlineClose>
+                <AiOutlineClose style={BUTTON_STYLE} onClick={() => setIsOpenDelModal()}></AiOutlineClose>
             </div>
         </div>
         </>
