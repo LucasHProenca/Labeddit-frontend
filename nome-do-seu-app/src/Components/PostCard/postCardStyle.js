@@ -101,9 +101,7 @@ border: 0.797px solid #ECECEC;
 @media screen and (min-device-width : 320px) and (max-device-width : 700px) {
 width: 6rem;
 }
-
 `
-
 
 export const LikeRate = styled.p`
 display: inline;
@@ -125,7 +123,6 @@ gap: 0.8rem;
 border-radius: 2.8rem;
 border: 0.793px solid #ECECEC;
 cursor:pointer;
-
 `
 
 export const CommentsQuantity = styled.p`
@@ -175,7 +172,6 @@ border-radius: 2.7rem;
 margin-top: 5%;
 padding: 0px 30px 0px 10px;
 }
-
 `
 
 export const BotaoEditPost = styled.button`
@@ -218,7 +214,6 @@ justify-content: space-around;
 span {
 cursor: pointer;
 }
-
 `
 
 export const FormDelModal = styled.form`

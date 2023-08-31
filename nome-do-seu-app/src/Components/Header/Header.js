@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext} from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import { globalContext } from "../../GlobalState/GlobalStateContext"
 import { goToHomePage, goToLoginPage, goToUserPage} from "../../Router/coordinator"
@@ -6,7 +6,6 @@ import { HeaderContainer, ImgHeader, ButtonHeader} from "./headerStyle"
 import Logo from "../../assets/midia/LogoHeader.png"
 import {TfiClose} from "react-icons/tfi"
 import {BiSolidUserAccount} from "react-icons/bi"
-
 
 export default function Header() {
 
@@ -21,7 +20,6 @@ export default function Header() {
             setIsLoggedIn(false)
         }
         goToLoginPage(navigate)
-
     }
 
   let buttonText = isLoggedIn ? "Logout" : "Login"
@@ -29,7 +27,6 @@ export default function Header() {
     const screenRender = () => {
         if (params.pathname === "/") {
             return <div></div>
-
         } else if (params.pathname === "/signup") {
             return <HeaderContainer>
                 <ImgHeader src={Logo} alt = "logo" />

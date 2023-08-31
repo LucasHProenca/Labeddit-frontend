@@ -46,18 +46,15 @@ export default function LoginPage() {
             await axios.post(BASE_URL + "/users/login", body)
                 .then((res) => {
                     localStorage.setItem("token", res.data.token)
-
                 })
-
             setIsLoading(false)
             goToHomePage(navigate)
             setIsLoggedIn(true)
         } catch (error) {
             setIsLoading(false)
             console.error(error.response)
-            // window.alert(error.response.data)
-            if(typeof error.response.data === "string") {
-                showToast({ type: "error", message: `${error.response.data}`})
+            if (typeof error.response.data === "string") {
+                showToast({ type: "error", message: `${error.response.data}` })
             } else {
                 showToast({ type: "error", message: "Verifique suas informações" })
             }
@@ -72,7 +69,6 @@ export default function LoginPage() {
                 <SloganLogin>O projeto de rede social da Labenu</SloganLogin>
             </LogoContainer>
             <FormLogin onSubmit={login} autoComplete="off">
-
                 <InputLogin
                     name={"email"}
                     value={form.email}
@@ -81,28 +77,27 @@ export default function LoginPage() {
                     required
                     autoComplete="email"
                 />
-
                 <PasswordView>
-                <InputLogin
-                    name={"password"}
-                    value={form.password}
-                    onChange={onChangeForm}
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Senha"
-                    required
-                    autoComplete="current-password"
-                />
-                {showPassword === false ? (
-                    <AiOutlineEye
-                        class = "eye"
-                        onClick={() => handleShowPassword(true)}
+                    <InputLogin
+                        name={"password"}
+                        value={form.password}
+                        onChange={onChangeForm}
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Senha"
+                        required
+                        autoComplete="current-password"
                     />
-                ) : (
-                    <AiOutlineEyeInvisible
-                        class = "eye"          
-                        onClick={() => handleShowPassword(false)}
-                    />
-                )}
+                    {showPassword === false ? (
+                        <AiOutlineEye
+                            class="eye"
+                            onClick={() => handleShowPassword(true)}
+                        />
+                    ) : (
+                        <AiOutlineEyeInvisible
+                            class="eye"
+                            onClick={() => handleShowPassword(false)}
+                        />
+                    )}
                 </PasswordView>
                 <ToastAnimated />
                 <BotaoContinuar disabled={isLoading}>Continuar</BotaoContinuar>

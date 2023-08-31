@@ -84,7 +84,6 @@ a{
 font-size: 1.2rem;
 }
 }
-
 `
 
 export const CabeçalhoSignUp = styled.h1`
@@ -129,6 +128,5 @@ width: 36.5rem;
 width: 85vw;
 font-size: 1.2rem;
 padding: 1rem;
-
 }
 `

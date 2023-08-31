@@ -16,6 +16,7 @@ const Toast = styled(ToastContainer)`
     background: 'rgb(255, 102, 102)';
   }
 `;
+
 export const showToast = ({ type, message }) => {
   switch (type) {
     case 'success':

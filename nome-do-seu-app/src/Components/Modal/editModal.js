@@ -34,7 +34,6 @@ cursor: 'pointer'
 }
 
 export default function EditModal ({isOpenModal, children, setOpenModal}) {
-
     if (isOpenModal) {
         return<>
         <div style={BACKGROUND_STYLE}>

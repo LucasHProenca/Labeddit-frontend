@@ -6,7 +6,6 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 gap: 1rem;
-
 `
 
 export const LogoContainer = styled.div`
@@ -19,7 +18,6 @@ margin-bottom: 5%;
 @media screen and (min-device-width : 320px) and (max-device-width : 725px) {
 margin-bottom: 15%;
 }
-
 `
 
 export const ImgLogo = styled.img`

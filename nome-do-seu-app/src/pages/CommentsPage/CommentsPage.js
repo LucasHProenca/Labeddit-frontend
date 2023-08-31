@@ -7,6 +7,7 @@ import { BASE_URL } from "../../constants/constants"
 import { globalContext } from "../../GlobalState/GlobalStateContext"
 import { useProtectedPage } from "../../hooks/use-protected-page"
 import { CreateCommentContainer, CommentCreation, CommentBtn, CommentLine, CardsPosition } from "./commentsStyle"
+import ToastAnimated, { showToast } from "../../Components/Toast/Toast"
 
 export default function CommentsPage () {
     const context = useContext(globalContext)
@@ -16,7 +17,6 @@ export default function CommentsPage () {
     const [commentContent, setCommentContent] = useState("")
     let pathParams = useParams()
     let params = useLocation()
-    // console.log(pathParams)
     const navigate = useNavigate()
     useProtectedPage(navigate)
 
@@ -45,10 +45,8 @@ export default function CommentsPage () {
             const response = await axios.get(BASE_URL + `/comments/${pathParams.id}`, config)
             setIsLoading(false)
             setComments(response.data)
-
         } catch (error) {
             console.error(error.response)
-            window.alert(error.response.data)
         }
     }
 
@@ -69,14 +67,14 @@ export default function CommentsPage () {
                 content: commentContent
             }
 
-            const response = await axios.post(BASE_URL + `/comments/${pathParams.id}`, body, config)
+            await axios.post(BASE_URL + `/comments/${pathParams.id}`, body, config)
             setCommentContent("")
             setIsLoading(false)
             getComments()
             getPosts()
+            showToast({ type: "success", message: "Publicado com sucesso" })
         } catch (error) {
             console.error(error.response)
-            window.alert(error.response.data)
         }
     }
 
@@ -107,6 +105,7 @@ export default function CommentsPage () {
             value={commentContent} 
             onChange = {(e) => setCommentContent(e.target.value)}
                 placeholder="Adicionar comentário"></CommentCreation>
+                <ToastAnimated/>
             <CommentBtn disabled = {isLoading}>Responder</CommentBtn>
             </CreateCommentContainer>
             <CommentLine/>

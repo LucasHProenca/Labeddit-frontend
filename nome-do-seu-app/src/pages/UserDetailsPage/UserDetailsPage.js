@@ -6,7 +6,6 @@ import { globalContext } from "../../GlobalState/GlobalStateContext"
 export default function UserDetailsPage() {
     const context = useContext(globalContext)
     const { users, getUsers } = context
-    let pathParams = useParams()
     let params = useLocation()
 
     useEffect(() => {
@@ -21,10 +20,10 @@ export default function UserDetailsPage() {
     const findUser = users.find((user) =>
         user.id === id
     )
-        
+
     const result = () => {
-        if(findUser) {
-            return <UserCard user = {findUser}/>
+        if (findUser) {
+            return <UserCard user={findUser} />
         }
     }
     return (

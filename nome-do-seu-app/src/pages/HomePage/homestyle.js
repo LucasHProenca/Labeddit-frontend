@@ -63,7 +63,6 @@ background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%), #ACACAC;
 @media screen and (min-device-width : 320px) and (max-device-width : 700px) {
 width: 85vw;
 }
-
 `
 
 export const CardsPosition = styled.div `

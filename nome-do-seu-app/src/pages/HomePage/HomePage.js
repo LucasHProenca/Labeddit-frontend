@@ -28,7 +28,6 @@ export default function HomePage() {
 
     const createPost = async (e) => {
         e.preventDefault()
-
         setIsLoading(true)
 
         try {

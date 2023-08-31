@@ -24,14 +24,10 @@ import ToastAnimated, { showToast } from "../../Components/Toast/Toast"
 import DeleteModal from "../Modal/deleteModal"
 
 export default function CommentCard(props) {
-
     const context = useContext(globalContext)
-    const { posts, getPosts } = context
+    const { getPosts } = context
     const { comment, getComments } = props
-    const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
-    let pathParams = useParams()
-    // console.log(pathParams)
     const [isOpenModal, setIsOpenModal] = useState(false)
     const [commentContent, setCommentContent] = useState("")
     const [activeBtn, setActiveBtn] = useState("none")
@@ -43,7 +39,6 @@ export default function CommentCard(props) {
 
     const editComment = async (e) => {
         e.preventDefault()
-
         setIsLoading(true)
 
         try {
@@ -58,7 +53,6 @@ export default function CommentCard(props) {
             const body = {
                 content: commentContent
             }
-
             await axios.put(BASE_URL + `/comments/${comment.id}`, body, config)
             setCommentContent("")
             setIsLoading(false)
@@ -66,7 +60,6 @@ export default function CommentCard(props) {
             showToast({ type: "success", message: "Editado com sucesso" })
         } catch (error) {
             console.error(error.response)
-            // window.alert(error.response.data)
             if (typeof error.response.data === "string") {
                 showToast({ type: "error", message: `${error.response.data}` })
             } else {
@@ -88,14 +81,12 @@ export default function CommentCard(props) {
             }
 
             await axios.delete(BASE_URL + `/comments/${comment.id}`, config)
-
             setIsLoading(false)
             getComments()
             getPosts()
             showToast({ type: "success", message: "Comentário apagado com sucesso" })
         } catch (error) {
             console.error(error.response)
-            // window.alert(error.response.data)
             showToast({ type: "error", message: `${error.response.data}` })
         }
     }
@@ -113,7 +104,6 @@ export default function CommentCard(props) {
 
         axios.get(BASE_URL + `/comments/${comment.id}/like`, config)
             .then((response) => {
-                // console.log(response.data[0])
                 const like = response.data[0]
                 if (like) {
                     if (like.like === 1) {
@@ -160,7 +150,6 @@ export default function CommentCard(props) {
             }
         } catch (error) {
             console.error(error.response)
-            // window.alert(error.response.data)
             showToast({ type: "error", message: `${error.response.data}` })
         }
     }
@@ -196,7 +185,6 @@ export default function CommentCard(props) {
             }
         } catch (error) {
             console.error(error.response)
-            // window.alert(error.response.data)
             showToast({ type: "error", message: `${error.response.data}` })
         }
     }

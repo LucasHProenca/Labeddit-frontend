@@ -53,9 +53,8 @@ export default function SignUpPage() {
         } catch (error) {
             setIsLoading(false)
             console.error(error.response)
-            // window.alert(error.response.data)
-            if(typeof error.response.data === "string") {
-                showToast({ type: "error", message: `${error.response.data}`})
+            if (typeof error.response.data === "string") {
+                showToast({ type: "error", message: `${error.response.data}` })
             } else {
                 showToast({ type: "error", message: "Verifique suas informações" })
             }
@@ -73,7 +72,6 @@ export default function SignUpPage() {
                     required
                     placeholder="Apelido"
                 />
-
                 <InputSignup
                     name={"email"}
                     value={form.email}
@@ -82,31 +80,29 @@ export default function SignUpPage() {
                     required
                     autoComplete="email"
                 />
-
                 <PasswordView>
-                <InputSignup
-                    name={"password"}
-                    value={form.password}
-                    onChange={onChangeForm}
-                    placeholder="Senha"
-                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,12}$"
-                    title="Sua senha deve ter entre 8 e 12 caracteres, sendo um maíusculo, um número e um caracter especial"
-                    type={showPassword ? "text" : "password"}
-                    required
-                    autoComplete="current-password"
-                />
-
-                {showPassword === false ? (
-                    <AiOutlineEye
-                        class="eye"
-                        onClick={() => handleShowPassword(true)}
+                    <InputSignup
+                        name={"password"}
+                        value={form.password}
+                        onChange={onChangeForm}
+                        placeholder="Senha"
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,12}$"
+                        title="Sua senha deve ter entre 8 e 12 caracteres, sendo um maíusculo, um número e um caracter especial"
+                        type={showPassword ? "text" : "password"}
+                        required
+                        autoComplete="current-password"
                     />
-                ) : (
-                    <AiOutlineEyeInvisible
-                        class="eye"
-                        onClick={() => handleShowPassword(false)}
-                    />
-                )}
+                    {showPassword === false ? (
+                        <AiOutlineEye
+                            class="eye"
+                            onClick={() => handleShowPassword(true)}
+                        />
+                    ) : (
+                        <AiOutlineEyeInvisible
+                            class="eye"
+                            onClick={() => handleShowPassword(false)}
+                        />
+                    )}
                 </PasswordView>
                 <TermosContrato>
                     Ao continuar, você concorda com o nosso <a href="https://www.labenu.com.br/?utm_term=labenu&utm_campaign=&utm_source=googleads&utm_medium=cpc&hsa_acc=3391787529&hsa_cam=20417453410&hsa_grp=147104971850&hsa_ad=667659725933&hsa_src=g&hsa_tgt=kwd-949277095394&hsa_kw=labenu&hsa_mt=b&hsa_net=googleads&hsa_ver=3&gad=1&gclid=Cj0KCQjwuZGnBhD1ARIsACxbAVhiq3PttnH_AbjK5XMjcsoLzNBpTSfvEpDjyap7BTBZPkLwA-kBCI0aAtlREALw_wcB">

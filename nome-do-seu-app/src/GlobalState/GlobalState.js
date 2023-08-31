@@ -32,7 +32,6 @@ export const GlobalState = ({children}) => {
 
         } catch (error) {
             console.error(error.response)
-            // window.alert(error.response.data)
         }
     }
 
@@ -53,7 +52,6 @@ export const GlobalState = ({children}) => {
 
         } catch (error) {
             console.error(error.response)
-            window.alert(error.response.data)
         }
     }
 

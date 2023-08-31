@@ -74,7 +74,6 @@ border: 0.797px solid #ECECEC;
 @media screen and (min-device-width : 320px) and (max-device-width : 700px) {
 width: 6rem;
 }
-
 `
 
 export const LikeRate = styled.p`
@@ -194,7 +193,6 @@ justify-content: space-around;
 span {
     cursor: pointer;
 }
-
 `
 
 export const FormDelModal = styled.form`

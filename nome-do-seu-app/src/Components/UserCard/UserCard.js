@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import { AiFillEdit } from "react-icons/ai"
-import { goToLoginPage, goToUserDetailsPage, goToUserPage } from "../../Router/coordinator"
+import { goToLoginPage, goToUserDetailsPage } from "../../Router/coordinator"
 import { useContext, useState } from "react"
 import { globalContext } from "../../GlobalState/GlobalStateContext"
 import { BASE_URL } from "../../constants/constants"
@@ -49,12 +49,10 @@ export default function UserCard(props) {
             }
 
             await axios.delete(BASE_URL + `/users/${user.id}`, config)
-
             setIsLoading(false)
             window.localStorage.removeItem("token")
             setIsLoggedIn(false)
             goToLoginPage(navigate)
-
             showToast({ type: "success", message: "Usuário apagado com sucesso" })
         } catch (error) {
             console.error(error.response)
@@ -64,7 +62,6 @@ export default function UserCard(props) {
 
     const editUser = async (e) => {
         e.preventDefault()
-
         setIsLoading(true)
 
         try {
@@ -123,7 +120,6 @@ export default function UserCard(props) {
                                 onChange={onChangeForm}
                                 placeholder="Apelido"
                             />
-
                             <InputEditUser
                                 name={"email"}
                                 value={form.email}
@@ -131,7 +127,6 @@ export default function UserCard(props) {
                                 placeholder="E-mail"
                                 autoComplete="email"
                             />
-
                             <PasswordView>
                                 <InputEditUser
                                     name={"password"}
@@ -143,7 +138,6 @@ export default function UserCard(props) {
                                     type={showPassword ? "text" : "password"}
                                     autoComplete="current-password"
                                 />
-
                                 {showPassword === false ? (
                                     <AiOutlineEye
                                         class="eye"
@@ -176,7 +170,7 @@ export default function UserCard(props) {
                             <span onClick={() => deleteUser()}>Sim</span>
                         </DivDeleteModal>
                     </FormDelModal>
-                    <ToastAnimated/>
+                    <ToastAnimated />
                 </DeleteModal>
             </ContainerUserDetails>
 

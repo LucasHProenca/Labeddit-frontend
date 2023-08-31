@@ -33,7 +33,6 @@ cursor: 'pointer',
 }
 
 export default function DeleteModal ({isOpenDelModal, children, setIsOpenDelModal}) {
-
     if (isOpenDelModal) {
         return<>
         <div style={BACKGROUND_STYLE}>
