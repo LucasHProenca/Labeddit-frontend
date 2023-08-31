@@ -17,7 +17,7 @@ export default function UserCard(props) {
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
     const context = useContext(globalContext)
-    const { getUsers } = context
+    const { getUsers, setIsLoggedIn } = context
     let params = useLocation()
     const [showElement, setShowElement] = useState(false)
     const [isOpenDelModal, setIsOpenDelModal] = useState(false)
@@ -52,8 +52,8 @@ export default function UserCard(props) {
 
             setIsLoading(false)
             window.localStorage.removeItem("token")
+            setIsLoggedIn(false)
             goToLoginPage(navigate)
-            getUsers()
 
             showToast({ type: "success", message: "Usuário apagado com sucesso" })
         } catch (error) {
@@ -176,6 +176,7 @@ export default function UserCard(props) {
                             <span onClick={() => deleteUser()}>Sim</span>
                         </DivDeleteModal>
                     </FormDelModal>
+                    <ToastAnimated/>
                 </DeleteModal>
             </ContainerUserDetails>
 
