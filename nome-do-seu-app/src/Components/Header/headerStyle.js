@@ -14,6 +14,12 @@ left: 10%;
 font-size: 1.8rem;
 font-weight: 600;
 cursor: pointer;
+opacity: 0.9;
+
+:hover{
+    transform: scale(1.05);
+    opacity: 1;
+}
 }
 
 .userBtn {
@@ -22,6 +28,12 @@ left: 10%;
 font-size: 1.8rem;
 font-weight: 600;
 cursor: pointer;
+opacity: 0.9;
+
+:hover{
+    transform: scale(1.05);
+    opacity: 1;
+}
 }
 
 @media screen and (min-device-width : 320px) and (max-device-width : 760px) {
@@ -50,6 +62,12 @@ line-height: normal;
 position: absolute;
 left: 80%;
 cursor: pointer;
+opacity: 0.9;
+
+:hover{
+    transform: scale(1.05);
+    opacity: 1;
+}
 
 @media screen and (min-device-width : 320px) and (max-device-width : 760px) {
 font-size: 1.4rem;

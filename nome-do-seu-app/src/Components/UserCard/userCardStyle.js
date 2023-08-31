@@ -123,6 +123,14 @@ font-style: normal;
 font-weight: 700;
 line-height: normal;
 
+cursor: pointer;
+opacity: 0.9;
+
+:hover{
+    transform: scale(1.05);
+    opacity: 1;
+}
+
 @media screen and (min-device-width : 320px) and (max-device-width : 760px) {
 height: 10vh;
 width: 90vw;
@@ -149,6 +157,13 @@ font-style: normal;
 font-weight: 700;
 line-height: normal;
 margin-top: 1rem;
+cursor: pointer;
+opacity: 0.9;
+
+:hover{
+    transform: scale(1.05);
+    opacity: 1;
+}
 
 @media screen and (min-device-width : 320px) and (max-device-width : 760px) {
 height: 10vh;

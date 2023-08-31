@@ -70,6 +70,7 @@ export default function SignUpPage() {
                     name={"nickname"}
                     value={form.nickname}
                     onChange={onChangeForm}
+                    required
                     placeholder="Apelido"
                 />
 
@@ -78,6 +79,7 @@ export default function SignUpPage() {
                     value={form.email}
                     onChange={onChangeForm}
                     placeholder="E-mail"
+                    required
                     autoComplete="email"
                 />
 
@@ -90,6 +92,7 @@ export default function SignUpPage() {
                     pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,12}$"
                     title="Sua senha deve ter entre 8 e 12 caracteres, sendo um maíusculo, um número e um caracter especial"
                     type={showPassword ? "text" : "password"}
+                    required
                     autoComplete="current-password"
                 />
 
