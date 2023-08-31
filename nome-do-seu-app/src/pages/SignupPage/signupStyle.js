@@ -14,6 +14,7 @@ height: 6rem;
 flex-shrink: 0;
 font-size: 1.4rem;
 padding: 0px 50px 0px 20px;
+border-radius: 0.5rem;
 
 @media screen and (min-device-width : 320px) and (max-device-width : 760px) {
 height: 10vh;
@@ -92,6 +93,7 @@ justify-content: center;
 @media screen and (min-device-width : 320px) and (max-device-width : 760px) {
 font-size: 2.4rem;
 margin-bottom: 25%;
+margin-left: 5vw;
 }
 `
 

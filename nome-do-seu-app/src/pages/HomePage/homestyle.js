@@ -16,6 +16,11 @@ border-radius: 1.2rem;
 background: #EDEDED;
 font-size: 1.4rem;
 padding: 0px 50px 0px 20px;
+
+@media screen and (min-device-width : 320px) and (max-device-width : 700px) {
+width: 80vw;
+padding: 0px 30px 0px 10px;
+}
 `
 
 export const PostBtn = styled.button `
@@ -32,6 +37,11 @@ font-size: 1.4rem;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
+
+@media screen and (min-device-width : 320px) and (max-device-width : 700px) {
+width: 85vw;
+padding: 1.2rem 7rem;
+}
 `
 
 export const FormLine = styled.hr `
@@ -42,6 +52,11 @@ margin-bottom: 3vh;
 width: 36.3006rem;
 height: 0.05rem;
 background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%), #ACACAC;
+
+@media screen and (min-device-width : 320px) and (max-device-width : 700px) {
+width: 85vw;
+}
+
 `
 
 export const CardsPosition = styled.div `

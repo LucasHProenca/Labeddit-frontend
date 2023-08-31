@@ -23,6 +23,12 @@ font-size: 1.8rem;
 font-weight: 600;
 cursor: pointer;
 }
+
+@media screen and (min-device-width : 320px) and (max-device-width : 760px) {
+.closeBtn {
+font-size: 1.4rem;
+}
+}
 `
 
 export const ImgHeader = styled.img`
@@ -47,5 +53,6 @@ cursor: pointer;
 
 @media screen and (min-device-width : 320px) and (max-device-width : 760px) {
 font-size: 1.4rem;
+left: 75%;
 }
 `

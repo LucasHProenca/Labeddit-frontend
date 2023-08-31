@@ -71,6 +71,7 @@ height: 6rem;
 flex-shrink: 0;
 font-size: 1.4rem;
 padding: 0px 50px 0px 20px;
+border-radius: 0.5rem;
 
 @media screen and (min-device-width : 320px) and (max-device-width : 725px) {
 height: 10vh;

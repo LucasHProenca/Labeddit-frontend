@@ -12,7 +12,7 @@ import {
     CommentInformation,
     CardContainerModal,
     InputModal,
-    BotaoEditPost,
+    BotaoEditComment,
     FormModal,
     FormDelModal,
     DivDeleteModal,
@@ -244,7 +244,7 @@ export default function CommentCard(props) {
                 </CardContainerModal>
                 <FormModal onSubmit={editComment}>
                     <InputModal value={commentContent} onChange={(e) => setCommentContent(e.target.value)} placeholder="Edite seu comentário" />
-                    <BotaoEditPost>Postar</BotaoEditPost>
+                    <BotaoEditComment>Postar</BotaoEditComment>
                 </FormModal>
             </EditModal>
             <ToastAnimated />

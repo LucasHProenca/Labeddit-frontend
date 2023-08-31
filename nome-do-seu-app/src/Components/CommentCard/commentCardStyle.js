@@ -18,6 +18,11 @@ box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 :hover{
     transform: scale(1.05)
   }
+
+@media screen and (min-device-width : 320px) and (max-device-width : 700px) {
+width: 80vw;
+padding: 0px 30px 0px 10px;
+}
 `
 
 export const CommentCreator = styled.h3`
@@ -37,6 +42,10 @@ font-size: 1.8rem;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
+
+@media screen and (min-device-width : 320px) and (max-device-width : 700px) {
+font-size: 1.5rem;
+}
 `
 
 export const LikeContainer = styled.span`
@@ -60,6 +69,10 @@ border: 0.797px solid #ECECEC;
 
 .dislike-active {
     color: red;
+}
+
+@media screen and (min-device-width : 320px) and (max-device-width : 700px) {
+width: 6rem;
 }
 
 `
@@ -95,6 +108,11 @@ gap: 1.5rem;
 .trash {
     cursor: pointer;
 }
+
+@media screen and (min-device-width : 320px) and (max-device-width : 700px) {
+gap: 0.8rem;
+justify-content: space-between;
+}
 `
 
 export const CardContainerModal = styled.div`
@@ -112,6 +130,11 @@ overflow: hidden;
 text-overflow: ellipsis;
 white-space: wrap;
 box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+
+@media screen and (min-device-width : 320px) and (max-device-width : 700px) {
+width: 80vw;
+padding: 0px 30px 0px 10px;
+}
 `
 
 export const InputModal = styled.input`
@@ -123,9 +146,14 @@ flex-shrink: 0;
 font-size: 1rem;
 padding: 0px 50px 0px 20px;
 border-radius: 2.7rem;
+
+@media screen and (min-device-width : 320px) and (max-device-width : 700px) {
+margin-top: 5%;
+padding: 0px 30px 0px 10px;
+}
 `
 
-export const BotaoEditPost = styled.button`
+export const BotaoEditComment = styled.button`
 display: flex;
 width: 100px;
 justify-content: center;
@@ -146,6 +174,10 @@ cursor: pointer;
 :hover {
     opacity: 1;
 }
+
+@media screen and (min-device-width : 320px) and (max-device-width : 700px) {
+margin-top: 5%;
+}
 `
 
 export const FormModal = styled.form`
@@ -162,6 +194,7 @@ justify-content: space-around;
 span {
     cursor: pointer;
 }
+
 `
 
 export const FormDelModal = styled.form`
@@ -172,5 +205,12 @@ justify-content: flex-start;
 h3 {
     display: flex;
     justify-content: center;
+}
+
+@media screen and (min-device-width : 320px) and (max-device-width : 700px) {
+
+h3{
+    font-size: 1rem;
+}
 }
 `

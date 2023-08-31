@@ -51,9 +51,9 @@ export default function UserCard(props) {
             await axios.delete(BASE_URL + `/users/${user.id}`, config)
 
             setIsLoading(false)
-            getUsers()
             window.localStorage.removeItem("token")
             goToLoginPage(navigate)
+            getUsers()
 
             showToast({ type: "success", message: "Usuário apagado com sucesso" })
         } catch (error) {
@@ -170,7 +170,7 @@ export default function UserCard(props) {
                         </CardModal>
                     </ContainerModal>
                     <FormDelModal>
-                        <h3>Tem certeza que deseja excluir sua conta?</h3>
+                        <h3>Tem certeza que deseja excluir essa conta?</h3>
                         <DivDeleteModal>
                             <span onClick={() => setIsOpenDelModal(!isOpenDelModal)}>Não</span>
                             <span onClick={() => deleteUser()}>Sim</span>
