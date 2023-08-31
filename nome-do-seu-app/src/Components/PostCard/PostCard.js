@@ -41,17 +41,8 @@ export default function PostCard(props) {
     const [activeBtn, setActiveBtn] = useState("none")
 
     useEffect(() => {
-        if(window.localStorage.getItem("token")){
-            const data = window.localStorage.getItem('likes')
-            setActiveBtn(JSON.parse(data))
-        }
+        getLikes()
     }, [])
-
-    useEffect(() => {
-        if(window.localStorage.getItem("token")) {
-            window.localStorage.setItem('likes', JSON.stringify(activeBtn))
-        }
-    }, [activeBtn])
 
     const deletePost = async () => {
         setIsLoading(true)
@@ -108,6 +99,39 @@ export default function PostCard(props) {
                 showToast({ type: "error", message: "Não é possível publicar um post vazio" })
             }
         }
+    }
+
+    
+
+    const getLikes = () => {
+        setIsLoading(true)
+
+        const token = window.localStorage.getItem("token")
+
+        const config = {
+            headers: {
+                Authorization: token
+            }
+        }
+
+        axios.get(BASE_URL + `/posts/${post.id}/like`, config)
+        .then((response) => {
+            // console.log(response.data[0])
+            const like = response.data[0]
+            if(like) {
+                if(like.like === 1) {
+                    setActiveBtn("like")
+                } else if(like.like === 0) {
+                    setActiveBtn("dislike")
+                }
+            } else {
+                setActiveBtn("none")
+            }
+        }) 
+        .catch ((error) => {
+            console.error(error.response)
+            window.alert(error.response.data)
+        })
     }
 
     const doLike = async () => {

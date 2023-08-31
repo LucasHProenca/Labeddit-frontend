@@ -1,1 +1,1 @@
-export const BASE_URL = "https://labeddit-lhp-faruqi.onrender.com";
+export const BASE_URL = "https://labeddit-lucasproenca.onrender.com";

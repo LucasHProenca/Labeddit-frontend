@@ -13,6 +13,11 @@ background: #FBFBFB;
 overflow: hidden;
 text-overflow: ellipsis;
 white-space: wrap;
+box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+
+:hover{
+    transform: scale(1.05)
+  }
 `
 
 export const PostCreator = styled.h3`
@@ -72,11 +77,11 @@ border: 0.797px solid #ECECEC;
 }
 
 .like-active {
-    color: #FF0063;
+    color: green;
 }
 
 .dislike-active {
-    color: #FF0063;
+    color: red;
 }
 
 `
@@ -130,6 +135,7 @@ background: #FBFBFB;
 overflow: hidden;
 text-overflow: ellipsis;
 white-space: wrap;
+box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 `
 
 export const InputModal = styled.input`

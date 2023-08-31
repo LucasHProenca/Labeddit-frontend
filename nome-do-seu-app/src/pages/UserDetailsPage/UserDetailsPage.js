@@ -16,27 +16,20 @@ export default function UserDetailsPage() {
             getUsers()
         }
     }, [])
-
     const id = params.pathname.split("/")[2]
 
     const findUser = users.find((user) =>
-        user.id = id
+        user.id === id
     )
-
+        
     const result = () => {
         if(findUser) {
-            return <div>
-                {users.map((user) => {
-                    if(user.id === pathParams.id) {
-                        return <UserCard key = {user.id} user = {user} />
-                    }
-                })}
-            </div>
+            return <UserCard user = {findUser}/>
         }
     }
     return (
-        <div>
+        <>
             {result()}
-        </div>
+        </>
     )
 }

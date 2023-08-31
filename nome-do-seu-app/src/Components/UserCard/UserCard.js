@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import { AiFillEdit } from "react-icons/ai"
-import { goToUserDetailsPage } from "../../Router/coordinator"
+import { goToLoginPage, goToUserDetailsPage, goToUserPage } from "../../Router/coordinator"
 import { useContext, useState } from "react"
 import { globalContext } from "../../GlobalState/GlobalStateContext"
 import { BASE_URL } from "../../constants/constants"
@@ -8,7 +8,8 @@ import ToastAnimated, { showToast } from "../../Components/Toast/Toast"
 import axios from "axios"
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
-import { BotaoEditar, FormEditUser, InputEditUser, PasswordView } from "./userCardStyle"
+import { BotaoEditar, DetailsContainer, ContainerUserDetails, BtnOptions, CardModal, ContainerModal, CardContainer, DivDeleteModal, FormDelModal, FormEditUser, InputEditUser, PasswordView } from "./userCardStyle"
+import DeleteModal from "../Modal/deleteModal"
 
 export default function UserCard(props) {
 
@@ -19,6 +20,7 @@ export default function UserCard(props) {
     const { getUsers } = context
     let params = useLocation()
     const [showElement, setShowElement] = useState(false)
+    const [isOpenDelModal, setIsOpenDelModal] = useState(false)
     const [form, setForm] = useState({
         nickname: "",
         email: "",
@@ -35,6 +37,31 @@ export default function UserCard(props) {
         setShowPassword(type);
     };
 
+    const deleteUser = async () => {
+        setIsLoading(true)
+        try {
+            const token = window.localStorage.getItem("token")
+
+            const config = {
+                headers: {
+                    Authorization: token
+                }
+            }
+
+            await axios.delete(BASE_URL + `/users/${user.id}`, config)
+
+            setIsLoading(false)
+            getUsers()
+            window.localStorage.removeItem("token")
+            goToLoginPage(navigate)
+
+            showToast({ type: "success", message: "Usuário apagado com sucesso" })
+        } catch (error) {
+            console.error(error.response)
+            showToast({ type: "error", message: `${error.response.data}` })
+        }
+    }
+
     const editUser = async (e) => {
         e.preventDefault()
 
@@ -50,9 +77,9 @@ export default function UserCard(props) {
             }
 
             const body = {
-                nickname: form.nickname,
-                email: form.email,
-                password: form.password
+                nickname: form.nickname || undefined,
+                email: form.email || undefined,
+                password: form.password || undefined
             }
 
             await axios.put(BASE_URL + `/users/${user.id}`, body, config)
@@ -62,7 +89,6 @@ export default function UserCard(props) {
             showToast({ type: "success", message: "Informações editadas com sucesso" })
         } catch (error) {
             console.error(error.response)
-            // window.alert(error.response.data)
             if (typeof error.response.data === "string") {
                 showToast({ type: "error", message: `${error.response.data}` })
             } else {
@@ -75,18 +101,21 @@ export default function UserCard(props) {
     const screenRender = () => {
         if (params.pathname === "/users") {
             return <>
-                <div>
+                <CardContainer>
                     <h2>{user.nickname}</h2>
                     <p>{user.email}</p>
                     <AiFillEdit class="editbtn" onClick={() => goToUserDetailsPage(navigate, id)} />
-                </div>
+                </CardContainer>
             </>
         } else if (params.pathname.includes("/user-details/")) {
-            return <div>
-                    <h2>{user.nickname}</h2>
-                    <p>{user.email}</p>
-                    <button onClick={() => setShowElement(!showElement)}>Editar informações pessoais</button>
-                    {showElement ? 
+            return <ContainerUserDetails>
+                <BtnOptions onClick={() => setShowElement(!showElement)}>Editar Informações</BtnOptions>
+                {showElement ?
+                    <DetailsContainer>
+                        <CardContainer>
+                            <h2>{user.nickname}</h2>
+                            <p>{user.email}</p>
+                        </CardContainer>
                         <FormEditUser onSubmit={editUser} autoComplete="off">
                             <InputEditUser
                                 name={"nickname"}
@@ -127,11 +156,29 @@ export default function UserCard(props) {
                                     />
                                 )}
                             </PasswordView>
-                            <BotaoEditar disabled={isLoading}>Cadastrar</BotaoEditar>
                             <ToastAnimated />
-                        </FormEditUser> : null}
-                </div>
-            
+                            <BotaoEditar disabled={isLoading}>Concluir</BotaoEditar>
+                        </FormEditUser>
+                    </DetailsContainer>
+                    : null}
+                <BtnOptions onClick={() => setIsOpenDelModal(!isOpenDelModal)}>Excluir Conta!</BtnOptions>
+                <DeleteModal isOpenDelModal={isOpenDelModal} setIsOpenDelModal={() => setIsOpenDelModal(!isOpenDelModal)} >
+                    <ContainerModal>
+                        <CardModal>
+                            <h2>{user.nickname}</h2>
+                            <p>{user.email}</p>
+                        </CardModal>
+                    </ContainerModal>
+                    <FormDelModal>
+                        <h3>Tem certeza que deseja excluir sua conta?</h3>
+                        <DivDeleteModal>
+                            <span onClick={() => setIsOpenDelModal(!isOpenDelModal)}>Não</span>
+                            <span onClick={() => deleteUser()}>Sim</span>
+                        </DivDeleteModal>
+                    </FormDelModal>
+                </DeleteModal>
+            </ContainerUserDetails>
+
         }
     }
 

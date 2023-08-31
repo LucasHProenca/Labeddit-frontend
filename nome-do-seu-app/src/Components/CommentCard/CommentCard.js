@@ -1,13 +1,14 @@
 import axios from "axios"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router"
 import { BASE_URL } from "../../constants/constants"
 import { globalContext } from "../../GlobalState/GlobalStateContext"
 import { PostCreator } from "../PostCard/postCardStyle"
-import { CardContainer, 
-    ContentComment, 
-    LikeContainer, 
-    LikeRate, 
+import {
+    CardContainer,
+    ContentComment,
+    LikeContainer,
+    LikeRate,
     CommentInformation,
     CardContainerModal,
     InputModal,
@@ -36,6 +37,10 @@ export default function CommentCard(props) {
     const [activeBtn, setActiveBtn] = useState("none")
     const [isOpenDelModal, setIsOpenDelModal] = useState(false)
 
+    useEffect(() => {
+        getLikes()
+    }, [])
+
     const editComment = async (e) => {
         e.preventDefault()
 
@@ -62,8 +67,8 @@ export default function CommentCard(props) {
         } catch (error) {
             console.error(error.response)
             // window.alert(error.response.data)
-            if(typeof error.response.data === "string") {
-                showToast({ type: "error", message: `${error.response.data}`})
+            if (typeof error.response.data === "string") {
+                showToast({ type: "error", message: `${error.response.data}` })
             } else {
                 showToast({ type: "error", message: "Não é possível publicar um comentário vazio" })
             }
@@ -91,8 +96,39 @@ export default function CommentCard(props) {
         } catch (error) {
             console.error(error.response)
             // window.alert(error.response.data)
-            showToast({ type: "error", message: `${error.response.data}`})
+            showToast({ type: "error", message: `${error.response.data}` })
         }
+    }
+
+    const getLikes = () => {
+        setIsLoading(true)
+
+        const token = window.localStorage.getItem("token")
+
+        const config = {
+            headers: {
+                Authorization: token
+            }
+        }
+
+        axios.get(BASE_URL + `/comments/${comment.id}/like`, config)
+            .then((response) => {
+                // console.log(response.data[0])
+                const like = response.data[0]
+                if (like) {
+                    if (like.like === 1) {
+                        setActiveBtn("like")
+                    } else if (like.like === 0) {
+                        setActiveBtn("dislike")
+                    }
+                } else {
+                    setActiveBtn("none")
+                }
+            })
+            .catch((error) => {
+                console.error(error.response)
+                window.alert(error.response.data)
+            })
     }
 
     const doLike = async () => {
@@ -115,7 +151,7 @@ export default function CommentCard(props) {
             setIsLoading(false)
             getComments()
 
-            if(activeBtn === "none") {
+            if (activeBtn === "none") {
                 setActiveBtn("like")
             } else if (activeBtn === "dislike") {
                 setActiveBtn("like")
@@ -125,7 +161,7 @@ export default function CommentCard(props) {
         } catch (error) {
             console.error(error.response)
             // window.alert(error.response.data)
-            showToast({ type: "error", message: `${error.response.data}`})
+            showToast({ type: "error", message: `${error.response.data}` })
         }
     }
 
@@ -149,11 +185,11 @@ export default function CommentCard(props) {
             setIsLoading(false)
             getComments()
 
-            if(activeBtn === "none" && rate === 0) {
+            if (activeBtn === "none" && rate === 0) {
                 setActiveBtn("dislike")
             } else if (activeBtn === "none") {
                 setActiveBtn("dislike")
-            } else if (activeBtn === "like"){
+            } else if (activeBtn === "like") {
                 setActiveBtn("dislike")
             } else {
                 setActiveBtn("none")
@@ -161,7 +197,7 @@ export default function CommentCard(props) {
         } catch (error) {
             console.error(error.response)
             // window.alert(error.response.data)
-            showToast({ type: "error", message: `${error.response.data}`})
+            showToast({ type: "error", message: `${error.response.data}` })
         }
     }
 
@@ -190,47 +226,47 @@ export default function CommentCard(props) {
                         <LikeRate>{handleNumbers(rate)}</LikeRate>
                         <PiArrowFatDownDuotone id="likebtn" class={`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
                     </LikeContainer>
-                    <AiFillEdit id="open-modal" class = "editbtn" onClick={() => setIsOpenModal(true)} />
+                    <AiFillEdit id="open-modal" class="editbtn" onClick={() => setIsOpenModal(true)} />
                     <AiFillDelete class="trash" onClick={() => setIsOpenDelModal(true)}></AiFillDelete>
                 </CommentInformation>
             </CardContainer>
             <EditModal isOpenModal={isOpenModal} setOpenModal={() => setIsOpenModal(!isOpenModal)}>
-            <CardContainerModal>
-                <PostCreator>Enviado por: {comment.creator.nickname}</PostCreator>
-                <ContentComment>{comment.content}</ContentComment>
-                <CommentInformation>
-                    <LikeContainer>
-                        <PiArrowFatUpDuotone id="likebtn" class={`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
-                        <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <PiArrowFatDownDuotone id="likebtn" class= {`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
-                    </LikeContainer>
-                </CommentInformation>
-            </CardContainerModal>
-            <FormModal onSubmit = {editComment}>
-                <InputModal value={commentContent} onChange = {(e) => setCommentContent(e.target.value)} placeholder = "Edite seu comentário"/>
-                <BotaoEditPost>Postar</BotaoEditPost>
-            </FormModal>
+                <CardContainerModal>
+                    <PostCreator>Enviado por: {comment.creator.nickname}</PostCreator>
+                    <ContentComment>{comment.content}</ContentComment>
+                    <CommentInformation>
+                        <LikeContainer>
+                            <PiArrowFatUpDuotone id="likebtn" class={`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
+                            <LikeRate>{handleNumbers(rate)}</LikeRate>
+                            <PiArrowFatDownDuotone id="likebtn" class={`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
+                        </LikeContainer>
+                    </CommentInformation>
+                </CardContainerModal>
+                <FormModal onSubmit={editComment}>
+                    <InputModal value={commentContent} onChange={(e) => setCommentContent(e.target.value)} placeholder="Edite seu comentário" />
+                    <BotaoEditPost>Postar</BotaoEditPost>
+                </FormModal>
             </EditModal>
             <ToastAnimated />
-            <DeleteModal isOpenDelModal = {isOpenDelModal} setIsOpenDelModal = {() => setIsOpenDelModal(!isOpenDelModal)} >
-            <CardContainerModal>
-                <PostCreator>Enviado por: {comment.creator.nickname}</PostCreator>
-                <ContentComment>{comment.content}</ContentComment>
-                <CommentInformation>
-                    <LikeContainer>
-                        <PiArrowFatUpDuotone id="likebtn" class={`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
-                        <LikeRate>{handleNumbers(rate)}</LikeRate>
-                        <PiArrowFatDownDuotone id="likebtn" class= {`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
-                    </LikeContainer>
-                </CommentInformation>
-            </CardContainerModal>
-            <FormDelModal>
-                        <h3>Tem certeza que deseja excluir seu comentário?</h3>
-                        <DivDeleteModal>
+            <DeleteModal isOpenDelModal={isOpenDelModal} setIsOpenDelModal={() => setIsOpenDelModal(!isOpenDelModal)} >
+                <CardContainerModal>
+                    <PostCreator>Enviado por: {comment.creator.nickname}</PostCreator>
+                    <ContentComment>{comment.content}</ContentComment>
+                    <CommentInformation>
+                        <LikeContainer>
+                            <PiArrowFatUpDuotone id="likebtn" class={`btn ${activeBtn === "like" ? "like-active" : ""}`} onClick={() => doLike()}></PiArrowFatUpDuotone>
+                            <LikeRate>{handleNumbers(rate)}</LikeRate>
+                            <PiArrowFatDownDuotone id="likebtn" class={`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`} onClick={() => doDislike()}></PiArrowFatDownDuotone>
+                        </LikeContainer>
+                    </CommentInformation>
+                </CardContainerModal>
+                <FormDelModal>
+                    <h3>Tem certeza que deseja excluir seu comentário?</h3>
+                    <DivDeleteModal>
                         <span onClick={() => setIsOpenDelModal(!isOpenDelModal)}>Não</span>
                         <span onClick={() => deleteComment()}>Sim</span>
-                        </DivDeleteModal>
-                    </FormDelModal>
+                    </DivDeleteModal>
+                </FormDelModal>
             </DeleteModal>
         </>
     )
