@@ -17,10 +17,8 @@
 ## 💻 Sobre o projeto 
 
  
-📟 Pokédex - A [Pokédex](https://pokedex-lucas-henrique.surge.sh/) foi desenvolvida com a finalidade de trazer de volta um pequeno gosto de infância, devido a isso, 
-temos disponíveis todos os 151 pokémons da região de Kanto para integrar a sua pokédex. Venha nos visitar e torne-se um mestre pokémon!
-A parte inicial do projeto foi realizada pensando em telas maiores que 1570 pixels até um máximo de 1920 pixels.
-Tendo em vista atender ao máximo de dispositivos possíveis, também foram adicionadas diversas outras formatações, para telas intermediárias, entre 481 e 800 pixels de largura para tablets e entre 320 até 480 pixels de largura para celulares smartphones android.
+📟 Labeddit - O [Labeddit](https://labeddit-faruqi-lhp.surge.sh/) foi desenvolvido baseado numa rede social famosa e com o objetivo de possibilitar o cadastro de novos usuários, assim como a criação de publicações e comentários e a interação entre as pessoas, podendo cada uma manifestar se gostou ou não daquele conteúdo exibido por outro usuário.
+Este projeto possui inúmeras funcionalidades, as quais detalharemos mais adiante.
 
 Projeto desenvolvido durante o **Bootcamp Web Full-Stack** da [Labenu](https://www.labenu.com.br/curso-de-programacao-web-full-stack-integral).
 Esse bootcamp é uma experiência online, um programa com mais de 1000 horas de experiência prática em desenvolvimento Full-stack e projetos individuais.
