@@ -16,8 +16,8 @@
 
 ## 💻 Sobre o projeto 
 
-![image](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/c289eba8-0df5-4155-b0c6-e436c78ed2fa)
- Pokédex - A [Pokédex](https://pokedex-lucas-henrique.surge.sh/) foi desenvolvida com a finalidade de trazer de volta um pequeno gosto de infância, devido a isso, 
+ 
+![Favorite-Like 2-24](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/1dc51571-0722-4fe1-b6db-3aebcdb8fc6b)Pokédex - A [Pokédex](https://pokedex-lucas-henrique.surge.sh/) foi desenvolvida com a finalidade de trazer de volta um pequeno gosto de infância, devido a isso, 
 temos disponíveis todos os 151 pokémons da região de Kanto para integrar a sua pokédex. Venha nos visitar e torne-se um mestre pokémon!
 A parte inicial do projeto foi realizada pensando em telas maiores que 1570 pixels até um máximo de 1920 pixels.
 Tendo em vista atender ao máximo de dispositivos possíveis, também foram adicionadas diversas outras formatações, para telas intermediárias, entre 481 e 800 pixels de largura para tablets e entre 320 até 480 pixels de largura para celulares smartphones android.
