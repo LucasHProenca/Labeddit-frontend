@@ -79,6 +79,7 @@ Todo o projeto foi desenvolvido através da [PokéAPI](https://pokeapi.co/).
 #### ATENÇÃO!
 
 O Labeddit foi feito pensado em mobile-first, mas não se preocupe, ele foi projetado de forma responsiva para se adaptar a qualquer tipo de tela.
+Outro ponto importante a ser ressaltado é que toda e qualquer alteração dura apenas 15 minutos após o usuário realizar sua ultima ação dentro do website, devido ao fato de que nossa [API](https://documenter.getpostman.com/view/27682612/2s9Y5R36ij#ad2c5672-46e9-491f-aeca-96ac4e504ed1) está hospedada em um servidor que possui esta restrição.
 
 ### Desktop 
 
@@ -88,9 +89,14 @@ O Labeddit foi feito pensado em mobile-first, mas não se preocupe, ele foi proj
 
 Pensando na maior comodidade do usuário, a página de login foi desenvolvida dando ao mesmo a possibilidade de ocultar ou exibir sua senha, no entanto, caso seja seu primeiro contato com o Labeddit, você deve clicar no botão "Crie uma conta!" para ser redirecionado para a pagina de inscrição.
 
-#### Pokémon Capturado
+#### Página de Inscrição
 
-![PokemonCapturado](https://github.com/LucasHProenca/projeto-react-apis/assets/106993403/b1e4f64d-0034-4a5c-882a-9a8579112363)
+![SignupF1](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/2247ee54-9a76-4362-8207-a382faed9a1b)
+
+![SignupF2](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/f365916b-5982-4c60-a5e2-b58f626f7166)
+
+A página de inscrição possibilita ao usuário criar uma nova conta
+
 
 #### Pokédex
 
