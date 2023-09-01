@@ -85,6 +85,7 @@ O Labeddit foi feito pensado em mobile-first, mas não se preocupe, ele foi proj
 #### Página de Login 
 
 ![Login](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/4cf8835c-66aa-4b39-9cba-96ea3fa16d33)
+
 Pensando na maior comodidade do usuário, a página de login foi desenvolvida dando ao mesmo a possibilidade de ocultar ou exibir sua senha, no entanto, caso seja seu primeiro contato com o Labeddit, você deve clicar no botão "Crie uma conta!" para ser redirecionado para a pagina de inscrição.
 
 #### Pokémon Capturado
