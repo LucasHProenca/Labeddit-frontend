@@ -27,16 +27,13 @@ Esse bootcamp é uma experiência online, um programa com mais de 1000 horas de 
 
 ## ⚙️ Funcionalidades
 
-  - [x] Acesso a todos os pokémons da região de kanto;
+  - [x] Sistema de login e signup;
   - [x] Navegação entre as páginas;
-  - [x] Possibilidade de adicionar pokémons a sua pokédex;
-  - [x] Possibilidade de excluir pokémons da sua pokédex;
-  - [x] Analise de atributos de cada pokémon;  
-  - [x] Principais ataques;
-  - [x] Informações básicas;
-  - [x] Ataques especiais;
-  - [x] Versão shiny(brilhante);
-  - [x] Filtro para busca de um pokémon especifico.
+  - [x] Possibilidade de criar publicações e comentários;
+  - [x] Possibilidade de excluir publicações e comentários;
+  - [x] Interação entre usuários por meio de like ou dislike;  
+  - [x] Edição de usuário;
+  - [x] Deleção de usuário;
 
 ---
 
@@ -56,10 +53,10 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 $ git clone link-do-repositório-git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd projeto-react-apis
+$ cd Labeddit-frontend
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd pokedex
+$ cd nome-do-seu-app
 
 # Para abrir o vsCode
 $ code .
