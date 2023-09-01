@@ -102,30 +102,61 @@ A página de inscrição possibilita ao usuário criar uma nova conta, porém, a
 
 ![HomePageF2](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/e7260931-7917-4206-b8c0-1d1c06a3691e)
 
-Com a conta criada você irá se deparar com a tela inicial da nossa aplicação, onde poderá interagir com nossos milhões de outros usuários, seja criando uma nova publicação de um pensamento genial que você teve, até comentando em publicações das outras pessoas, curtindo-as, ou apenas observando o movimento da sua rede social.
+Com a conta criada você irá se deparar com a tela inicial da nossa aplicação, onde poderá interagir com nossos milhões de outros usuários, seja criando uma nova publicação de um pensamento genial que você teve, até comentando em publicações das outras pessoas, curtindo-as, ou apenas observando o movimento da sua rede social. Lembrando que todo e qualquer like, dislike ou comentário ficará salvo (lembrando que não é possível dar like ou dislike no seu conteúdo autoral) até que o servidor fique inativo.
+Você pode ver o botão de usuário localizado no topo esquerdo da página, salve ele na memória pois falaremos mais em breve.
 
 Oferecemos também ao usuário uma opção de edição de suas publicações ou deleção das mesmas. MAS CUIDADO, mexer no que é dos outros nem sempre é bem visto, pensando nisso, caso o usuário tente editar ou excluir a publicação de outra pessoa, uma mensagem de erro será retornada, como podemos observar nas imagens abaixo:
 
-![EditpostError](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/763a77e3-fadc-493c-b159-56f78b1e7cdc)
+![EditPostError](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/763a77e3-fadc-493c-b159-56f78b1e7cdc)
 
 ![DeletePostError](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/8711493c-0820-4f61-b967-9693300c05f9)
 
+A seguir vamos acessar a página de comentários clicando no botão de "chat" ao lado esquerdo da opção de editar.
 
-#### Pokémon Removido da Pokédex
+#### Página de comentários
 
-![Pokemon Removido](https://github.com/LucasHProenca/projeto-react-apis/assets/106993403/18353628-900a-4696-836d-365599bdf41a)
+![CommentsPageF1](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/0e96cde0-95b0-4421-9127-bbf0dfdeacf7)
 
-#### Filtro
+![CommentsPageF2](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/edeacc4c-c63b-4887-b714-44fe3014e6a8)
 
-![Filtro](https://github.com/LucasHProenca/projeto-react-apis/assets/106993403/46697e10-ad62-4476-aa50-404157981287)
+Dentro da página de comentários oferecemos as mesmas funcionalidades e restrições que contém em seu feed, lembre-se de respeitá-las ou terá as mesmas mensagens. 
 
-#### Página de Detalhes
+![EditCommentError](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/49ed8401-a2db-4848-8308-875f12c27a87)
 
-![DetalhesPoke](https://github.com/LucasHProenca/projeto-react-apis/assets/106993403/ef661af8-a8fd-4367-b328-2b2fc77a2f9c)
+![DeleteCommentError](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/8dd92fcb-f572-4f33-8cc2-3b508f911c6d)
 
-#### Perfil
+Agora voltaremos ao feed, para acessarmos a página de usuários.
 
-![PerfilPoke](https://github.com/LucasHProenca/projeto-react-apis/assets/106993403/1421ab7e-d075-40c1-bc0c-d1da2d9265ba)
+#### Página de usuários
+
+![image](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/d1937972-b3ca-491f-bbb3-a8c87d82d9be)
+
+Aqui teremos acesso a todos os usuários participantes da plataforma, e damos a ele a opção de editar suas informações pessoais ao clicar no botão de edição presente em seu card. Devido ao grande número de inscrições, buscamos deixar sempre as mais recentes logo no topo, portanto, será super tranquilo editar suas informações caso necessite.
+
+Planejamos introduzir em breve mudanças significativas para que o usuário possa visualizar apenas suas próprias informações.
+
+#### Página de edição dos dados pessoais
+
+![userDetails](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/5d861ec4-0b57-48e0-a5e4-3c06430f7de7)
+
+Ao chegar aqui, você irá se deparar com essas duas opções, a primeira para fazer a edição de seus dados pessoais e outra para deletar sua própria conta caso não tenha encontrado o que procura em nossa plataforma (não será o seu caso, fique tranquilo)
+
+Escolhendo a primeira opção um menu se abrirá e dará ao usuário a opção de editar todas as suas informações simultaneamente, ou apenas uma / duas delas, observe que agora a "Marli" se chama "Mazinha", no entanto seu e-mail se mantem o mesmo.
+
+![EditUser](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/3999a88b-b9a0-42a3-8da5-22ec47725126)
+
+Mantenha sempre o cuidado de não tentar editar as informações de outra pessoa, pois não será possível concluir essa ação, como podemos ver abaixo: 
+
+![EditUserError](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/6b9378fe-22ec-4fb9-9cd0-fa0bf6a7aeac)
+
+Se por alguma razão não atendemos suas expectativas, existe a opção de deletar sua conta, a qual não recomendamos de forma alguma! Ao clicar no botão de "Excluir conta" um popup se abrirá pergunta se o usuário realmente deseja fazer isso.
+
+![DeleteUser](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/b2cad1b4-f023-45a6-b253-e77f28b60f0a)
+
+
+#### IMPORTANTE
+
+Independente de qual seja o resultado final, agradecemos pelo tempo que passamos juntos, e esperamos nos ver novamente em breve.
 
 ---
 
