@@ -94,12 +94,22 @@ Pensando na maior comodidade do usuário, a página de login foi desenvolvida da
 
 ![SignupF2](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/f365916b-5982-4c60-a5e2-b58f626f7166)
 
-A página de inscrição possibilita ao usuário criar uma nova conta
+A página de inscrição possibilita ao usuário criar uma nova conta, porém, atente-se ao fato de que não será possível criar uma conta com o mesmo "Apelido" e/ou "E-mail" de outra pessoa, e que sua senha precisa respeitar o padrão estabelecido pelo backend
 
+#### Feed
 
-#### Pokédex
+![HomePageF1](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/542bae49-7b30-4432-88aa-570df18062a1)
 
-![Pokedex](https://github.com/LucasHProenca/projeto-react-apis/assets/106993403/1587b8a5-2c9f-4e40-abdc-0170853bbb51)
+![HomePageF2](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/e7260931-7917-4206-b8c0-1d1c06a3691e)
+
+Com a conta criada você irá se deparar com a tela inicial da nossa aplicação, onde poderá interagir com nossos milhões de outros usuários, seja criando uma nova publicação de um pensamento genial que você teve, até comentando em publicações das outras pessoas, curtindo-as, ou apenas observando o movimento da sua rede social.
+
+Oferecemos também ao usuário uma opção de edição de suas publicações ou deleção das mesmas. MAS CUIDADO, mexer no que é dos outros nem sempre é bem visto, pensando nisso, caso o usuário tente editar ou excluir a publicação de outra pessoa, uma mensagem de erro será retornada, como podemos observar nas imagens abaixo:
+
+![EditpostError](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/763a77e3-fadc-493c-b159-56f78b1e7cdc)
+
+![DeletePostError](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/8711493c-0820-4f61-b967-9693300c05f9)
+
 
 #### Pokémon Removido da Pokédex
 
