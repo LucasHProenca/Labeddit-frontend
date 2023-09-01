@@ -70,8 +70,6 @@ $ npm run start
 
 ```
 
-Todo o projeto foi desenvolvido através da [PokéAPI](https://pokeapi.co/).
-
 ---
 
 ## 📄 Páginas
