@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://github.com/LucasHProenca/projeto-react-apis/assets/106993403/a1e35e76-ae38-4ec1-9f8c-0044a92c9ef7" alt="" />
+<img src="https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/dd7d5f6c-9286-4974-92f5-cb109f2c95b2" alt="" />
 </div>
 
 ---
