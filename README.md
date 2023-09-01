@@ -10,6 +10,7 @@
  <a href="#-como-executar">Como executar</a> • 
  <a href="#-páginas">Páginas</a> • 
  <a href="#-tecnologias">Tecnologias</a> • 
+ <a href="#-agradecimentos">Agradecimentos</a> • 
  <a href="#-autor">Autor</a> • 
 </p>
 
@@ -172,9 +173,18 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[React Router](https://reactrouter.com/en/main)**
 -   **[React Context](https://legacy.reactjs.org/docs/context.html)**
 -   **[Styled-components](https://styled-components.com/)**
--   **[Design Systems](https://storybook.js.org/tutorials/design-systems-for-developers/react/en/introduction/)**
 -   **[Axios](https://axios-http.com/ptbr/docs/intro)**
 -   **[Estado Global](https://coderpad.io/blog/development/global-state-management-react/)**
+
+---
+
+## 🙏 Agradecimentos
+
+Aqui eu encerro minha jornada na [Labenu](https://www.labenu.com.br/curso-de-programacao-web-full-stack-integral), meu primeiro passo dentro do segmento de tecnologia, o primeiro de muitos, e com isso gostaria de agradecer primeiramente a Deus, a minha familia, meus pais, meu irmão e minha namorada que sempre me deram apoio durante todo esse processo, alguns dias eram mais difíceis do que outros, mas acredito que seja nesse momento onde mais temos a possibilidade de melhorar e crescer. Contúdo isso só foi possível graças ao time de professores sempre presentes para tirar quaisquer dúvidas que surgissem no caminho, agradeço imensamente a eles [Br](https://www.linkedin.com/in/brunoamorimramos/), [Marcelo](https://www.linkedin.com/in/marcelo-maia-7584b821b/), [Clara](https://www.linkedin.com/in/clara-meirelles/) e [Yuzo](https://www.linkedin.com/in/yuzokamoto/) sem vocês nada disso seria possível.
+
+Gostaria de agradecer também a [Bianca](https://www.linkedin.com/in/biancacipriano/) e a todo o time de empregas, por todo o suporte que me deram e continuam dando.
+
+E por último mas não menos importante, um agradecimento especial a um amigo que conheci durante o bootcamp, mas que espero levar pra vida e que possamos trabalhar juntos em breve [Vinicius](https://www.linkedin.com/in/devviniciussilva/)
 
 ---
 
