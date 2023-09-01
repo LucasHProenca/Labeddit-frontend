@@ -8,7 +8,6 @@
  <a href="#-sobre-o-projeto">Sobre</a> •
  <a href="#-funcionalidades">Funcionalidades</a> •
  <a href="#-como-executar">Como executar</a> • 
- <a href="#-detalhes">Detalhes</a> • 
  <a href="#-páginas">Páginas</a> • 
  <a href="#-tecnologias">Tecnologias</a> • 
  <a href="#-autor">Autor</a> • 
@@ -75,32 +74,18 @@ Todo o projeto foi desenvolvido através da [PokéAPI](https://pokeapi.co/).
 
 ---
 
-## 🔍 Detalhes 
-
-Este projeto conta com um código mais limpo e direto, uma vez que todas as modificações que ocorrem no layout do website com as trocas de tela são feitas considerando o caminho que o usuário se encontra no momento, por exemplo:
-Inicialmente o usuário se encontra na página inicial com 151 pokémons disponíveis para captura, contudo, ao capturar um deles, ou acessar a pokédex pelo botão localizado no cabeçalho, havéra uma mudança na rota do site, indicando para o código que alterações precisam ser feitas no layout, portanto, a lista de pokémons capturados é renderizada e ficará disponível para o usuário (caso ele tenha capturado algum pokémon), o card do mesmo sofre alterações mostrando no lugar da opção de capturar, onde temos a possibilidade de exclusão do mesmo, fazendo com que ele retorne a página inicial. 
-
-Trazemos também duas outras páginas, a de detalhes do pokémon, onde é possível acessa-la clicando em "Detalhes" dentro do card do mesmo, e isso o redirecionará novamente para um local que conta com fotografias do pokémon de frente e de costa, um retrato do mesmo no canto superior direito, assim como cada um dos seus atributos, seja ataque, defesa, ou etc, contando com barras de poder que mudam de cor de acordo com o quão forte ou não o pokémon é. Também temos alguns de seus movimentos mais básicos mostrados ao lado.
-
-A outra pagina é a de perfil, que fica disponível quando o nome de qualquer pokémon é clicado, esta página se assemelha bastante ao layout da de detalhes, contudo, as semelhanças param por aí. Devido à diversos fatos, desde o retrato do pokémon que é por sua vez de uma outra versão do jogo, algo mais "cartoonizado", contamos também com as informações básicas como peso e altura, também trouxemos alguns dos ataques mais fortes de cada um deles, e uma pequena animação das versões shiny (brilhantes), para mostrar ao usuário que ele também poderá se deparar com essas variações nos jogos atuais de Pokémon.
-
-Gostaria de ressaltar que, o cabeçalho também sofre alterações de acordo com a página em que o usuário se encontra, e um ponto especial é que, se o mesmo estiver em "Detalhes" ou no "Perfil", teremos duas possibilidades:
-Na primeira, caso o pokémon se encontre na lista inicial, ou seja, na página home, poderemos ver um botão de adicionar localizado no lado direito do cabeçalho. Na outra possibilidade, o pokémon estará contido na pokédex, então o mesmo botão mudará de cor, e sua função agora fará com que ele volte para a lista inicial, caso seja clicado.
-
-Outros pontos importantes a serem ressaltados são: Primeiramente, ao capturar ou excluir um pokémon uma janela se abre, indicando para o usuário uma mensagem de que a ação obteve êxito.
-Também foi adicionado um filtro a página inicial e a pokédex, onde é possível procurar pokémons de acordo com o nome, e assim que o mesmo é capturado ou excluído o campo de filtro é limpo, podendo o usuário iniciar uma nova busca.
-
-Pessoalmente falando, a prioridade para este trabalho foi em desenvolver corretamente a API, trazendo um layout limpo e adaptável e, fazer funções que não permitissem ao usuário ter o mesmo pokémon tanto na lista inicial quanto em sua pokédex, poís assim como nos jogos mais antigos, não havia uma razão para se capturar mais do que um do mesmo, sendo assim, eles eram considerados por mim e por muitos outros jogadores como sendo únicos, e duplica-los tirária um pouco desse sentimento.
-
----
-
 ## 📄 Páginas
+
+#### ATENÇÃO!
+
+O Labeddit foi feito pensado em mobile-first, mas não se preocupe, ele foi projetado de forma responsiva para se adaptar a qualquer tipo de tela.
 
 ### Desktop 
 
-#### Página Inicial 
+#### Página de Login 
 
-![PaginaInicial](https://github.com/LucasHProenca/projeto-react-apis/assets/106993403/55dc7d8d-479e-4073-b3ac-c96a5fb8fdca)
+![Login](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/4cf8835c-66aa-4b39-9cba-96ea3fa16d33)
+Pensando na maior comodidade do usuário, a página de login foi desenvolvida dando ao mesmo a possibilidade de ocultar ou exibir sua senha, no entanto, caso seja seu primeiro contato com o Labeddit, você deve clicar no botão "Crie uma conta!" para ser redirecionado para a pagina de inscrição.
 
 #### Pokémon Capturado
 
