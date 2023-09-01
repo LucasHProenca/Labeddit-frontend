@@ -103,6 +103,7 @@ A página de inscrição possibilita ao usuário criar uma nova conta, porém, a
 ![HomePageF2](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/e7260931-7917-4206-b8c0-1d1c06a3691e)
 
 Com a conta criada você irá se deparar com a tela inicial da nossa aplicação, onde poderá interagir com nossos milhões de outros usuários, seja criando uma nova publicação de um pensamento genial que você teve, até comentando em publicações das outras pessoas, curtindo-as, ou apenas observando o movimento da sua rede social. Lembrando que todo e qualquer like, dislike ou comentário ficará salvo (lembrando que não é possível dar like ou dislike no seu conteúdo autoral) até que o servidor fique inativo.
+
 Você pode ver o botão de usuário localizado no topo esquerdo da página, salve ele na memória pois falaremos mais em breve.
 
 Oferecemos também ao usuário uma opção de edição de suas publicações ou deleção das mesmas. MAS CUIDADO, mexer no que é dos outros nem sempre é bem visto, pensando nisso, caso o usuário tente editar ou excluir a publicação de outra pessoa, uma mensagem de erro será retornada, como podemos observar nas imagens abaixo:
