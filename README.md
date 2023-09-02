@@ -145,7 +145,7 @@ Planejamos introduzir em breve mudanças significativas para que o usuário poss
 
 Ao chegar aqui, você irá se deparar com essas duas opções, a primeira para fazer a edição de seus dados pessoais e outra para deletar sua própria conta caso não tenha encontrado o que procura em nossa plataforma (não será o seu caso, fique tranquilo)
 
-Escolhendo a primeira opção um menu se abrirá e dará ao usuário a opção de editar todas as suas informações simultaneamente, ou apenas uma / duas delas, observe que agora a "Marli" se chama "Mazinha", no entanto seu e-mail se mantem o mesmo.
+Escolhendo a primeira opção um menu se abrirá e dará ao usuário a opção de editar todas as suas informações simultaneamente, ou apenas uma / duas delas, observe que agora a "Marli" se chama "Mazinha", no entanto seu e-mail se mantém o mesmo.
 
 ![EditUser](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/3999a88b-b9a0-42a3-8da5-22ec47725126)
 
