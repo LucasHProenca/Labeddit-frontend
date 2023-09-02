@@ -89,7 +89,7 @@ Outro ponto importante a ser ressaltado é que toda e qualquer alteração dura 
 
 ![Login](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/4cf8835c-66aa-4b39-9cba-96ea3fa16d33)
 
-Pensando na maior comodidade do usuário, a página de login foi desenvolvida dando ao mesmo a possibilidade de ocultar ou exibir sua senha, no entanto, caso seja seu primeiro contato com o Labeddit, você deve clicar no botão "Crie uma conta!" para ser redirecionado para a pagina de inscrição.
+Pensando na maior comodidade do usuário, a página de login foi desenvolvida dando ao mesmo a possibilidade de ocultar ou exibir sua senha, no entanto, caso seja seu primeiro contato com o Labeddit, você deve clicar no botão "Crie uma conta!" para ser redirecionado para a página de inscrição.
 
 #### Página de Inscrição
 
@@ -145,7 +145,7 @@ Planejamos introduzir em breve mudanças significativas para que o usuário poss
 
 Ao chegar aqui, você irá se deparar com essas duas opções, a primeira para fazer a edição de seus dados pessoais e outra para deletar sua própria conta caso não tenha encontrado o que procura em nossa plataforma (não será o seu caso, fique tranquilo)
 
-Escolhendo a primeira opção um menu se abrirá e dará ao usuário a opção de editar todas as suas informações simultaneamente, ou apenas uma / duas delas, observe que agora a "Marli" se chama "Mazinha", no entanto seu e-mail se mantem o mesmo.
+Escolhendo a primeira opção um menu se abrirá e dará ao usuário a opção de editar todas as suas informações simultaneamente, ou apenas uma / duas delas, observe que agora a "Marli" se chama "Mazinha", no entanto seu e-mail se mantém o mesmo.
 
 ![EditUser](https://github.com/LucasHProenca/Labeddit-frontend/assets/106993403/3999a88b-b9a0-42a3-8da5-22ec47725126)
 
@@ -180,7 +180,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ## 🙏 Agradecimentos
 
-Aqui eu encerro minha jornada na [Labenu](https://www.labenu.com.br/), meu primeiro passo dentro do segmento de tecnologia, o primeiro de muitos, e com isso gostaria de agradecer primeiramente a Deus, a minha familia, meus pais, meu irmão e minha namorada que sempre me deram apoio durante todo esse processo, alguns dias eram mais difíceis do que outros, mas acredito que seja nesse momento onde mais temos a possibilidade de melhorar e crescer. Contúdo isso só foi possível graças ao time de professores sempre presentes para tirar quaisquer dúvidas que surgissem no caminho, agradeço imensamente a eles [Br](https://www.linkedin.com/in/brunoamorimramos/), [Marcelo](https://www.linkedin.com/in/marcelo-maia-7584b821b/), [Clara](https://www.linkedin.com/in/clara-meirelles/) e [Yuzo](https://www.linkedin.com/in/yuzokamoto/) sem vocês nada disso seria possível.
+Aqui eu encerro minha jornada na [Labenu](https://www.labenu.com.br/), meu primeiro passo dentro do segmento de tecnologia, o primeiro de muitos, e com isso gostaria de agradecer primeiramente a Deus, a minha familia, meus pais, meu irmão e minha namorada que sempre me deram apoio durante todo esse processo, alguns dias eram mais difíceis do que outros, mas acredito que seja nesse momento onde mais temos a possibilidade de melhorar e crescer. Contudo, isso só foi possível graças ao time de professores sempre presentes para tirar quaisquer dúvidas que surgissem no caminho, agradeço imensamente a eles [Br](https://www.linkedin.com/in/brunoamorimramos/), [Marcelo](https://www.linkedin.com/in/marcelo-maia-7584b821b/), [Clara](https://www.linkedin.com/in/clara-meirelles/) e [Yuzo](https://www.linkedin.com/in/yuzokamoto/) sem vocês nada disso seria possível.
 
 Gostaria de agradecer também a [Bianca](https://www.linkedin.com/in/biancacipriano/) e a todo o time de empregas, por todo o suporte que me deram e continuam dando.
 
@@ -198,3 +198,4 @@ E por último mas não menos importante, um agradecimento especial a um amigo qu
 [![Linkedin Badge](https://img.shields.io/badge/-Lucas-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/lucas-proen%C3%A7a-512650106/)](https://www.linkedin.com/in/lucas-proen%C3%A7a-512650106/) 
 
 ---
+
