@@ -9,6 +9,7 @@ import { globalContext } from "../../GlobalState/GlobalStateContext";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import ToastAnimated, { showToast } from "../../Components/Toast/Toast"
+import { Loading } from "../../Components/Loading/Loading";
 
 export default function LoginPage() {
 
@@ -35,10 +36,8 @@ export default function LoginPage() {
 
     const login = async (e) => {
         e.preventDefault()
-
+        setIsLoading(true)
         try {
-            setIsLoading(true)
-
             const body = {
                 email: form.email,
                 password: form.password
@@ -104,7 +103,7 @@ export default function LoginPage() {
             </FormLogin>
             <LinhaEntreBotoes></LinhaEntreBotoes>
             <SeparacaoBotoes>
-                <BotaoCriarConta disabled={isLoading} onClick={() => goToSignupPage(navigate)}>Crie uma conta!</BotaoCriarConta>
+                <BotaoCriarConta disabled={isLoading} onClick={() => goToSignupPage(navigate)}>Crie uma conta!</BotaoCriarConta>{isLoading && <Loading/>}
             </SeparacaoBotoes>
         </>
     )

@@ -8,6 +8,7 @@ import { FormSignup, InputSignup, BotaoCadastrar, TermosContrato, CabeçalhoSign
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import ToastAnimated, { showToast } from "../../Components/Toast/Toast"
+import { Loading } from "../../Components/Loading/Loading"
 
 export default function SignUpPage() {
 
@@ -34,9 +35,8 @@ export default function SignUpPage() {
 
     const signUp = async (e) => {
         e.preventDefault()
-
+        setIsLoading(true)
         try {
-            setIsLoading(true)
             const body = {
                 nickname: form.nickname,
                 email: form.email,
@@ -63,7 +63,7 @@ export default function SignUpPage() {
 
     return (
         <div>
-            <CabeçalhoSignUp>Olá, boas vidas ao LabEddit ;)</CabeçalhoSignUp>
+            <CabeçalhoSignUp>Olá, boas vindas ao LabEddit ;)</CabeçalhoSignUp>
             <FormSignup onSubmit={signUp} autoComplete="off">
                 <InputSignup
                     name={"nickname"}
@@ -116,6 +116,7 @@ export default function SignUpPage() {
                     <label for="exemple1">Eu concordo em receber email sobre coisas legais no Labeddit</label>
                 </CheckboxContract>
                 <BotaoCadastrar disabled={isLoading}>Cadastrar</BotaoCadastrar>
+                {isLoading && <Loading/>}
                 <ToastAnimated />
             </FormSignup>
         </div>
