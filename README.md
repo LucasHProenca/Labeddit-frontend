@@ -83,7 +83,7 @@ O Labeddit foi feito pensado em mobile-first, mas não se preocupe, ele foi proj
 
 Outro ponto importante a ser ressaltado é que toda e qualquer alteração dura apenas 15 minutos após o usuário realizar sua ultima ação dentro do website, devido ao fato de que nossa [API](https://documenter.getpostman.com/view/27682612/2s9Y5R36ij#ad2c5672-46e9-491f-aeca-96ac4e504ed1) está hospedada em um servidor que possui esta restrição.
 
-### Desktop 
+### Mobile
 
 #### Página de Login 
 
